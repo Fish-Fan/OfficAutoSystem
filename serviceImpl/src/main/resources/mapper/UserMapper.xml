@@ -15,8 +15,8 @@
         <result property="departmentId" column="department_id"/>
         <result property="currentConferenceApplyId" column="current_conference_apply_id"/>
         <result property="currentPositionApplyId" column="current_position_apply_id"/>
-        <association property="position" column="position_id" select="com.littlepig.mapper.PositionMapper.selectPositionById"></association>
-        <association property="department" column="department_id" select="com.littlepig.mapper.DepartmentMapper.selectDepartmentById"></association>
+        <association property="position" column="position_id" select="com.fanyank.mapper.PositionMapper.selectPositionById"></association>
+        <association property="department" column="department_id" select="com.fanyank.mapper.DepartmentMapper.selectDepartmentById"></association>
 
     </resultMap>
     <select id="selectMessageByUsername" parameterType="string" resultMap="userResultMap" >

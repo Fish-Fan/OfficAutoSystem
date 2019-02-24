@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fanyank.mapper.ConferenceMapper">
     <!--获取所有会议室-->
-    <select id="getAllRoom" resultType="com.littlepig.pojo.ConferenceRoom">
+    <select id="getAllRoom" resultType="com.fanyank.pojo.ConferenceRoom">
         select * from conference_room;
     </select>
 
     <!--保存会议-->
-    <insert id="saveConference" parameterType="com.littlepig.pojo.Conference" useGeneratedKeys="true" keyProperty="id">
+    <insert id="saveConference" parameterType="com.fanyank.pojo.Conference" useGeneratedKeys="true" keyProperty="id">
         insert into conference(user_id,respondent_id,start_time,
         deadline_time,site,`type`,reason,status_id,content,`date`,create_time)
         values(#{userId},#{respondentId},#{startTime},#{deadlineTime},
@@ -24,7 +24,7 @@
     </insert>
 
     <!--获取所有会议类型-->
-    <select id="getAllType" resultType="com.littlepig.pojo.ConferenceType">
+    <select id="getAllType" resultType="com.fanyank.pojo.ConferenceType">
         select * from conference_type;
     </select>
 
@@ -34,7 +34,7 @@
 
     </select>
     
-    <resultMap id="conference" type="com.littlepig.pojo.Conference">
+    <resultMap id="conference" type="com.fanyank.pojo.Conference">
         <id property="id" column="id"/>
         <result property="date" column="date"/>
         <result property="startTime" column="start_time"/>
@@ -49,8 +49,8 @@
         <result property="resultTime" column="result_time"/>
         <result property="userId" column="user_id"/>
         <result property="respondentId" column="respondent_id"/>
-        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById"/>
-        <association property="respondUser" column="respondent_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <association property="user" column="user_id" select="com.fanyank.mapper.UserMapper.findById"/>
+        <association property="respondUser" column="respondent_id" select="com.fanyank.mapper.UserMapper.findById"/>
     </resultMap>
 
     <!--变更会议状态-->

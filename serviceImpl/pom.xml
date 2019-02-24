@@ -17,6 +17,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.fanyank</groupId>
             <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>

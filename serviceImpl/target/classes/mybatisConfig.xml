@@ -12,6 +12,6 @@
         <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
     <typeAliases>
-        <package name="com.littlepig.pojo"/>
+        <package name="com.fanyank.pojo"/>
     </typeAliases>
 </configuration>

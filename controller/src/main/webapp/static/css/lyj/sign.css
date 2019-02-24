@@ -1,0 +1,15 @@
+.ibox-content{
+    padding: 0px;
+}
+.footable thead tr th{
+    text-align: center;
+    width: 20%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.footable tbody tr td{
+    text-align: center;
+    width: 12.5%;
+    padding-left: 0px;
+    padding-right: 0px;
+}

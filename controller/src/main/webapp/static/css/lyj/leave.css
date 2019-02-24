@@ -1,0 +1,26 @@
+.form-group{
+    height: 40px;
+}
+.type{
+    padding-left: 0px;
+}
+#leaveReason{
+    text-align: center;
+    margin:0 auto;
+}
+.labelReason{
+    padding-left: 18px;
+}
+.simditor{
+    border: 0px;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+#buttons{
+    text-align:right;
+    margin:0 auto;
+    padding-right: 10px;
+}
+.btn-success{
+    margin-right: 5px;
+}

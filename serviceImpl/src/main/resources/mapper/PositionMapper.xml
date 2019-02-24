@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fanyank.mapper.PositionMapper">
-    <resultMap id="positionApply" type="com.littlepig.pojo.PositionApplication">
+    <resultMap id="positionApply" type="com.fanyank.pojo.PositionApplication">
         <id property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="positionId" column="position_id"/>
@@ -17,8 +17,8 @@
         <result property="departmentId" column="department_id"/>
         <result property="managerResultTime" column="manager_result_time"/>
         <result property="bossResultTime" column="boss_result_time"/>
-        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById"/>
-        <association property="respond" column="respondent_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <association property="user" column="user_id" select="com.fanyank.mapper.UserMapper.findById"/>
+        <association property="respond" column="respondent_id" select="com.fanyank.mapper.UserMapper.findById"/>
 
     </resultMap>
 
@@ -32,7 +32,7 @@
     </select>
 
     <!--职位调度-->
-    <insert id="insertPositionApply" parameterType="com.littlepig.pojo.PositionApplication" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insertPositionApply" parameterType="com.fanyank.pojo.PositionApplication" keyProperty="id" useGeneratedKeys="true">
         insert into position_application
         (user_id,position_id,respondent_id,application_time,reason,department_manager_advice,
         department_boss_advice,conclusion,application_reason,department_id,manager_result_time,boss_result_time)
@@ -41,7 +41,7 @@
         #{applicationReason},#{departmentId},#{managerResultTime},#{bossResultTime})
     </insert>
 
-    <update id="updateApplyInfo" parameterType="com.littlepig.pojo.PositionApplication">
+    <update id="updateApplyInfo" parameterType="com.fanyank.pojo.PositionApplication">
         update position_application
         set user_id = #{userId},position_id = #{positionId},application_time = #{applicationTime},
         reason = #{reason},department_manager_advice = #{departmentManagerAdvice},

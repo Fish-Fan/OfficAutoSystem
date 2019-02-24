@@ -44,7 +44,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.littlepig.mapper"/>
+        <property name="basePackage" value="com.fanyank.mapper"/>
     </bean>
 
 

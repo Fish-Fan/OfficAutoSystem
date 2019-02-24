@@ -13,8 +13,8 @@
 		<result property="respondentTime" column="respondent_time"/>
 		<result property="respondentId" column="respondent_id"/>
 		<result property="statesId" column="states_id"/>
-		<association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById" javaType="user"></association>
-		<association property="states" column="states_id" select="com.littlepig.mapper.StatesMapper.selectStates" javaType="states"></association>
+		<association property="user" column="user_id" select="com.fanyank.mapper.UserMapper.findById" javaType="user"></association>
+		<association property="states" column="states_id" select="com.fanyank.mapper.StatesMapper.selectStates" javaType="states"></association>
 	</resultMap>
 	<insert id = "insertLeave" parameterType="leave" useGeneratedKeys="true" keyProperty="id">
 	    insert into leave_info(user_id,start_time,deadline_time,type,reason,respondent_id,states_id,respondent_time,department_id)

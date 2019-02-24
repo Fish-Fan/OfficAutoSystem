@@ -10,9 +10,9 @@
         <result property="departureTime" column="departure_time"/>
         <result property="departureStatusId" column="departure_states_id"/>
         <result property="startStatusId" column="attendance_states_id"/>
-        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById" javaType="user"></association>
-        <association property="startStatus" column="attendance_states_id" select="com.littlepig.mapper.StatesMapper.selectStates" javaType="states"></association>
-        <association property="departureStatus" column="departure_states_id" select="com.littlepig.mapper.StatesMapper.selectStates" javaType="states"></association>
+        <association property="user" column="user_id" select="com.fanyank.mapper.UserMapper.findById" javaType="user"></association>
+        <association property="startStatus" column="attendance_states_id" select="com.fanyank.mapper.StatesMapper.selectStates" javaType="states"></association>
+        <association property="departureStatus" column="departure_states_id" select="com.fanyank.mapper.StatesMapper.selectStates" javaType="states"></association>
     </resultMap>
 	<insert id = "insertAttendance" parameterType="attendance" useGeneratedKeys="true" keyProperty="id">
 		insert into attendance(user_id,attendance_time,departure_time,attendance_states_id,departure_states_id)

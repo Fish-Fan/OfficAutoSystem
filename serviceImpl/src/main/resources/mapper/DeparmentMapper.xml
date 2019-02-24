@@ -19,8 +19,8 @@
         <result property="departmentId" column="department_id"/>
         <result property="departmentManagerId" column="department_manager_id"/>
         <result property="departmentBossId" column="department_boss_id"/>
-        <association property="manager" column="department_manager_id" select="com.littlepig.mapper.UserMapper.findById"/>
-        <association property="boss" column="department_boss_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <association property="manager" column="department_manager_id" select="com.fanyank.mapper.UserMapper.findById"/>
+        <association property="boss" column="department_boss_id" select="com.fanyank.mapper.UserMapper.findById"/>
     </resultMap>
     
     <!--更新部门管理人员信息-->
