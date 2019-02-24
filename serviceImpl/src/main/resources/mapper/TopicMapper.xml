@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlepig.mapper.TopicMapper">
+    <resultMap id="topicResultMap" type="com.littlepig.pojo.Topic">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userId" column="user_id"/>
+        <result property="nodeId" column="node_id"/>
+        <result property="replyNumber" column="reply_number"/>
+        <result property="text" column="text"/>
+        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <association property="node" column="node_id" select="com.littlepig.mapper.TopicMapper.findNodeById"/>
+        <collection property="comments" column="id" select="com.littlepig.mapper.TopicMapper.findCommentByTopicId"/>
+    </resultMap>
+
+    <!--根据topic_id查找Node-->
+<select id="findNodeById" resultType="node" parameterType="int">
+    SELECT * FROM node WHERE id = #{id}
+</select>
+    <!--查找所有的topic-->
+<select id="findAllTopic" resultMap="topicResultMap">
+    SELECT  * FROM topic ORDER BY create_time DESC
+</select>
+
+    <!--查找topic-->
+    <select id="findTopicById" resultMap="topicResultMap" parameterType="int">
+        SELECT * FROM topic WHERE id = #{id}
+    </select>
+    <select id="findCommentByTopicId"  resultType="comment" parameterType="int" >
+  SELECT * FROM  comment WHERE topic_id = #{id}
+    </select>
+    <!--查找所有的node-->
+<select id="findAllNode" resultType="node">
+    SELECT  * FROM node
+</select>
+    <resultMap id="commentResultMap" type="comment">
+        <id property="id" column="id"/>
+        <result property="comment" column="comment"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userId" column="user_id"/>
+        <result property="topicId" column="topic_id"/>
+        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <collection property="topics" column="topic_id" select="com.littlepig.mapper.TopicMapper.findTopicById"/>
+    </resultMap>
+    <resultMap id="commentResultMap1" type="comment">
+        <id property="id" column="id"/>
+        <result property="comment" column="comment"/>
+        <result property="createTime" column="create_time"/>
+        <result property="userId" column="user_id"/>
+        <result property="topicId" column="topic_id"/>
+        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById"/>
+    </resultMap>
+    <select id="findAllComment" resultMap="commentResultMap" >
+        SELECT  * FROM comment
+    </select>
+    <select id="findCommentById" parameterType="int" resultMap="commentResultMap">
+        SELECT  * FROM comment WHERE id = #{id}
+    </select>
+    <select id="findCommentByTopicId2" resultMap="commentResultMap1" parameterType="int">
+        SELECT  * FROM  comment WHERE topic_id = #{id}
+    </select>
+    <!--插入一个新的帖子-->
+    <insert id="insertTopic" parameterType="topic" useGeneratedKeys="true" keyProperty="id">
+        INSERT  INTO topic(`title`,create_time,user_id,node_id,`text`)
+        VALUES(#{title},#{createTime},#{userId},#{nodeId},#{text})
+    </insert>
+    <!--增加一个新的回复-->
+    <insert id="insertComment" keyProperty="id" useGeneratedKeys="true" parameterType="comment">
+        INSERT into comment(comment,create_time,user_id,topic_id)
+        VALUE (#{comment},#{createTime},#{userId},#{topicId})
+    </insert>
+    <!--更新topic表中的回复数-->
+    <update id="updateTopic" parameterType="topic" >
+        UPDATE topic SET reply_number = #{replyNumber}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

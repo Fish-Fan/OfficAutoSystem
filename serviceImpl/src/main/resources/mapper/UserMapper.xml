@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlepig.mapper.UserMapper">
+    <resultMap type="user" id="userResultMap">
+        <id property="id" column ="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="email" column="email"/>
+        <result property="officalNumber" column="offical_number"/>
+        <result property="postcode" column="postcode"/>
+        <result property="officalAddress" column="offical_address"/>
+        <result property="remark" column="remark"/>
+        <result property="positionId" column="position_id"/>
+        <result property="departmentId" column="department_id"/>
+        <result property="currentConferenceApplyId" column="current_conference_apply_id"/>
+        <result property="currentPositionApplyId" column="current_position_apply_id"/>
+        <association property="position" column="position_id" select="com.littlepig.mapper.PositionMapper.selectPositionById"></association>
+        <association property="department" column="department_id" select="com.littlepig.mapper.DepartmentMapper.selectDepartmentById"></association>
+
+    </resultMap>
+    <select id="selectMessageByUsername" parameterType="string" resultMap="userResultMap" >
+        select * from `user` where username = #{username}
+    </select>
+    <insert id="insertUser" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `user`(username, password,phone_number,email) values(#{username},#{password},#{phoneNumber},#{email})
+    </insert>
+    <select id="selectUserByUsername" parameterType="string" resultMap="userResultMap">
+        select * from `user` where username = #{username}
+    </select>
+    <select id="selectUserByEmail" parameterType="string" resultMap="userResultMap">
+        select * from `user` where email = #{email}
+    </select>
+    <update id="updatePasswordByEmail" parameterType="user">
+        UPDATE `user`  set  password = #{password}
+        WHERE email = #{email}
+    </update>
+    <update id="updatePasswordByUsername" parameterType="user">
+        UPDATE `user`  set  password = #{password}
+        WHERE username = #{username}
+    </update>
+    <update id="updateSignByUsername" parameterType="string">
+        UPDATE `user`  set  sign = 1
+        WHERE username = #{username}
+    </update>
+    <update id="exitSignByUsername" parameterType="string">
+        UPDATE `user`  set  sign = 0
+        WHERE username = #{username}
+    </update>
+    <update id="updateMessageByUsername" parameterType="user">
+        UPDATE `user`  set  avatar = #{avatar}, phone_number = #{phoneNumber},
+        email = #{email},offical_number = #{officalNumber},
+        postcode = #{postcode},offical_address = #{officalAddress},
+        `desc` = #{desc},remark = #{remark},current_conference_apply_id = #{currentConferenceApplyId},
+        current_position_apply_id = #{currentPositionApplyId}
+        WHERE username = #{username}
+    </update>
+
+    <!--Created by fanyank-->
+    <select id="findById" parameterType="int" resultMap="userResultMap">
+        select * from `user` where id = #{id}
+    </select>
+
+    <select id="findByLikeId" parameterType="int" resultMap="userResultMap">
+        SELECT * FROM user WHERE id LIKE CONCAT(#{id},'%');
+    </select>
+
+    <select id="findAll" resultType="user">
+        select * from `user`;
+    </select>
+
+    <select id="findUsernameById" parameterType="int" resultType="string">
+        select username from `user` where id = #{id}
+    </select>
+
+    <!--更新职员职位信息-->
+    <update id="updateUserPosition" parameterType="user">
+        update `user` set position_id = #{positionId}
+        where id = #{id}
+    </update>
+
+</mapper>

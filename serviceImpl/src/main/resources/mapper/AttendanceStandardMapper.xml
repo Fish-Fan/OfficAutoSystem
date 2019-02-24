@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlepig.mapper.AttendanceStandardMapper">
+    <resultMap id="attendanceStandardResultMap" type="attendanceStandard">
+        <id property="id" column="id"/>
+        <result property="workTime" column="work_time"/>
+        <result property="closingTime" column="closing_time"/>
+        <result property="season" column="season"/>
+      </resultMap>
+	<insert id = "insertAttendanceStandard" parameterType="attendanceStandard" useGeneratedKeys="true" keyProperty="id">
+		insert into attendance_standard(work_time,closing_time,season)
+		      values(#{workTime},#{closingTime},#{season})
+	</insert>
+    <update id = "updateAttendanceStandard" parameterType="attendanceStandard" >
+        update attendance_standard set work_time = #{workTime},closing_time = #{closingTime},season = #{season}
+                            where id = #{id}
+    </update>
+    <delete id="deleteAttendanceStandard" parameterType="int">
+        delete  from attendance_standard where id = #{id}
+    </delete>
+    <select id = "selectAttendanceStandard" parameterType="attendanceStandard" resultType="attendanceStandard">
+        select * from attendance_standard where season = #{season}
+    </select>
+    <select id = "selectAllAttendanceStandard"  resultMap="attendanceStandardResultMap">
+        select * from attendance_standard
+    </select>
+    <select id = "selectAttendanceStandardById" parameterType="int"  resultType="attendanceStandard">
+        select * from attendance_standard where id = #{id}
+    </select>
+</mapper>

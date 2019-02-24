@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlepig.mapper.DepartmentMapper">
+    <select id="selectDepartmentById" parameterType="int" resultType="department">
+        select * from department where id = #{id}
+    </select>
+
+    <!--插入部门管理人员信息-->
+    <insert id="insertDepartmentInfo" parameterType="departmentInfo">
+        insert into department_info
+        (department_manager_id,department_boss_id)
+        values(#{departmentManagerId},#{departmentBossId});
+    </insert>
+
+    <resultMap id="departmentInfoMap" type="departmentInfo">
+        <id property="id" column="id"/>
+        <result property="departmentId" column="department_id"/>
+        <result property="departmentManagerId" column="department_manager_id"/>
+        <result property="departmentBossId" column="department_boss_id"/>
+        <association property="manager" column="department_manager_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <association property="boss" column="department_boss_id" select="com.littlepig.mapper.UserMapper.findById"/>
+    </resultMap>
+    
+    <!--更新部门管理人员信息-->
+    <update id="updateDepartmentInfo" parameterType="departmentInfo">
+        update department_info 
+        set department_manager_id = #{departmentManagerId},
+        department_boss_id = #{departmentBossId};
+    </update>
+    
+    <!--查询部门信息-->
+    <select id="findByDepartmentId" parameterType="int" resultMap="departmentInfoMap">
+        select * from department_info
+        where id = #{departmentId}
+    </select>
+</mapper>

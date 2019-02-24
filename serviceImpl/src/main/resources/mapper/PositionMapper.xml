@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.littlepig.mapper.PositionMapper">
+    <resultMap id="positionApply" type="com.littlepig.pojo.PositionApplication">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="positionId" column="position_id"/>
+        <result property="respondentId" column="respondent_id"/>
+        <result property="applicationTime" column="application_time"/>
+        <result property="reason" column="reason"/>
+        <result property="departmentManagerAdvice" column="department_manager_advice"/>
+        <result property="departmentBossAdvice" column="department_boss_advice"/>
+        <result property="conclusion" column="conclusion"/>
+        <result property="applicationReason" column="application_reason"/>
+        <result property="departmentId" column="department_id"/>
+        <result property="managerResultTime" column="manager_result_time"/>
+        <result property="bossResultTime" column="boss_result_time"/>
+        <association property="user" column="user_id" select="com.littlepig.mapper.UserMapper.findById"/>
+        <association property="respond" column="respondent_id" select="com.littlepig.mapper.UserMapper.findById"/>
+
+    </resultMap>
+
+
+    <select id="selectPositionById" parameterType="int" resultType="position">
+        select * from position where id= #{id}
+    </select>
+
+    <select id="findAllPosition" resultType="position">
+        select * from position;
+    </select>
+
+    <!--职位调度-->
+    <insert id="insertPositionApply" parameterType="com.littlepig.pojo.PositionApplication" keyProperty="id" useGeneratedKeys="true">
+        insert into position_application
+        (user_id,position_id,respondent_id,application_time,reason,department_manager_advice,
+        department_boss_advice,conclusion,application_reason,department_id,manager_result_time,boss_result_time)
+        values(#{userId},#{positionId},#{respondentId},#{applicationTime},#{reason},
+        #{departmentManagerAdvice},#{departmentBossAdvice},#{conclusion},
+        #{applicationReason},#{departmentId},#{managerResultTime},#{bossResultTime})
+    </insert>
+
+    <update id="updateApplyInfo" parameterType="com.littlepig.pojo.PositionApplication">
+        update position_application
+        set user_id = #{userId},position_id = #{positionId},application_time = #{applicationTime},
+        reason = #{reason},department_manager_advice = #{departmentManagerAdvice},
+        department_boss_advice = #{departmentBossAdvice},conclusion = #{conclusion},
+        application_reason = #{applicationReason},department_id = #{departmentId},
+        manager_result_time = #{managerResultTime},boss_result_time = #{bossResultTime}
+        where id = #{id};
+    </update>
+
+    <!--查看职位申请信息-->
+    <select id="findPositionApply" parameterType="user" resultMap="positionApply">
+        select * from position_application
+        where department_id = #{departmentId}
+    </select>
+
+    <select id="findApplyById" parameterType="int" resultMap="positionApply">
+        select * from position_application where id = #{id};
+    </select>
+
+    <select id="findByRespondentId" parameterType="int" resultMap="positionApply">
+        select * from position_application where respondent_id = #{respondentId}
+    </select>
+</mapper>

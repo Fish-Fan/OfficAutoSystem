@@ -1,0 +1,96 @@
+.icheckbox {
+    display: inline-block;
+    margin: 10px 10px 10px 0;
+}
+
+.submitBtn {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.img-container {
+    width: 80px;
+    height: 80px;
+    float: left;
+}
+
+.select2-result-repository__avatar img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+/*.desc-container {*/
+    /*width: auto;*/
+    /*height: 80px;*/
+    /*margin-left: 80px;*/
+    /*padding-left: 10px;*/
+/*}*/
+
+/*.desc-container .message {*/
+    /*padding: 10px 0;*/
+    /*font-size: 13px;*/
+    /*color: #777777;*/
+    /*line-height: 1.1;*/
+/*}*/
+
+/*.desc-container .name{*/
+    /*font-size: 15px;*/
+    /*color: black;*/
+    /*font-weight: 700;*/
+/*}*/
+
+/*.desc-container .desc {*/
+    /*font-size: 11px;*/
+    /*color: #aaa;*/
+/*}*/
+
+.select2-result-repository {
+    padding-top: 4px;
+    padding-bottom: 3px
+}
+
+.select2-result-repository__avatar {
+    float: left;
+    width: 80px;
+    margin-right: 10px
+}
+
+.select2-result-repository__avatar img {
+    border-radius: 2px
+}
+
+.select2-result-repository__meta {
+    margin-left: 70px
+}
+
+.select2-result-repository__title span{
+    color: black;
+    font-weight: 700;
+    word-wrap: break-word;
+    line-height: 1.1;
+    margin-bottom: 4px
+}
+
+.select2-result-repository__forks, .select2-result-repository__stargazers {
+    margin-right: 1em
+}
+
+.select2-result-repository__forks, .select2-result-repository__stargazers, .select2-result-repository__watchers {
+    display: inline-block;
+    color: #aaa;
+    font-size: 11px
+}
+
+.select2-result-repository__description {
+    font-size: 13px;
+    color: #777;
+    margin-top: 4px
+}
+
+.select2-results__option--highlighted .select2-result-repository__title {
+    color: white
+}
+
+.select2-results__option--highlighted .select2-result-repository__forks, .select2-results__option--highlighted .select2-result-repository__stargazers, .select2-results__option--highlighted .select2-result-repository__description, .select2-results__option--highlighted .select2-result-repository__watchers {
+    color: #c6dcef
+}
