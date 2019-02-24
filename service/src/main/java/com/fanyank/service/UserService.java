@@ -1,76 +1,40 @@
-package com.littlepig.service;
+package com.fanyank.service;
 
-import com.littlepig.mapper.DepartmentMapper;
-import com.littlepig.mapper.UserMapper;
-import com.littlepig.pojo.DepartmentInfo;
-import com.littlepig.pojo.User;
+import com.fanyank.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-/**
- * Created by lenovo on 2018/3/7.
- */
 @Service
-public class UserService {
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private DepartmentMapper departmentMapper;
-    private User user;
+public interface UserService {
 
-    public int insertUser(User user){
-        int r1 = userMapper.insertUser(user);
-        user.setUsername(user.getUsername());
-        user.setPassword(user.getPassword());
-        user.setEmail(user.getEmail());
-        user.setPhoneNumber(user.getPhoneNumber());
-        return 0;
-    }
-    public User selectUserByUsername(String username){
-        return userMapper.selectUserByUsername(username);
-    }
-    public int updateSignByUsername(String username){
-        return userMapper.updateSignByUsername(username);
-    }
-    public User selectMessageByUsername(String username){
-       return userMapper.selectMessageByUsername(username);
-    }
-    public int updateMessageByUsername(User user){return userMapper.updateMessageByUsername(user);}
-    public int exitSignByUsername(String username){return userMapper.exitSignByUsername(username);}
-    public User selectUserByEmail(String email){return userMapper.selectUserByEmail(email);}
-    public  int updatePasswordByEmail(User user){return userMapper.updatePasswordByEmail(user);}
-    public int updatePasswordByUsername(User user){return userMapper.updatePasswordByUsername(user);}
-    /**
-     * created by fanyank
-     * @param id
-     * @return
-     */
-    public List<User> findByLikeId(int id) {
-        return userMapper.findByLikeId(id);
-    }
+    public int insertUser(User user);
 
-    public List<User> findAll() {
-        return userMapper.findAll();
-    }
+    public User selectUserByUsername(String username);
 
-    public User findById(int id){
-        return userMapper.findById(id);
-    }
+    public int updateSignByUsername(String username);
+
+    public User selectMessageByUsername(String username);
+
+    public int updateMessageByUsername(User user);
+
+    public int exitSignByUsername(String username);
+
+    public User selectUserByEmail(String email);
+
+    public  int updatePasswordByEmail(User user);
+
+    public int updatePasswordByUsername(User user);
+
+    public List<User> findByLikeId(int id);
+
+    public List<User> findAll();
+
+    public User findById(int id);
 
     /**
      * 获取用户的上级
      */
-    public User getUserLeader(User user) {
-        Integer departmentId = user.getDepartmentId();
-        DepartmentInfo info = departmentMapper.findByDepartmentId(departmentId);
-        if(user.getPositionId() == 1) {
-            return info.getManager();
-        } else {
-            return info.getBoss();
-        }
-    }
+    public User getUserLeader(User user);
 }

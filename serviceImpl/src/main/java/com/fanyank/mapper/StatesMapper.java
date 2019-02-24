@@ -1,10 +1,7 @@
-package com.littlepig.mapper;
+package com.fanyank.mapper;
 
-import com.littlepig.pojo.Attendance;
-import com.littlepig.pojo.States;
+import com.fanyank.pojo.States;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public interface StatesMapper {

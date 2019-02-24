@@ -1,15 +1,8 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.littlepig.mapper.TopicMapper;
-import com.littlepig.pojo.Comment;
-import com.littlepig.service.TopicService;
+import com.fanyank.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 public class TopicController {

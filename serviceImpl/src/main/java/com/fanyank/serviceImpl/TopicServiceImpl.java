@@ -4,13 +4,14 @@ import com.fanyank.mapper.TopicMapper;
 import com.fanyank.pojo.Comment;
 import com.fanyank.pojo.Node;
 import com.fanyank.pojo.Topic;
+import com.fanyank.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class TopicService {
+public class TopicServiceImpl implements TopicService{
     @Autowired
     private TopicMapper topicMapper;
 

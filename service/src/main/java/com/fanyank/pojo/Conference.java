@@ -1,6 +1,4 @@
-package com.littlepig.pojo;
-
-import java.util.List;
+package com.fanyank.pojo;
 
 public class Conference {
     private Integer id;

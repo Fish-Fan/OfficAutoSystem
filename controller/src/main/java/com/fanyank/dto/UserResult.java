@@ -1,6 +1,6 @@
-package com.littlepig.dto;
+package com.fanyank.dto;
 
-import com.littlepig.pojo.User;
+import com.fanyank.pojo.User;
 
 import java.util.List;
 

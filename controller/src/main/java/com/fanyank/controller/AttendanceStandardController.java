@@ -1,7 +1,8 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.littlepig.pojo.AttendanceStandard;
-import com.littlepig.service.AttendanceStandardService;
+
+import com.fanyank.pojo.AttendanceStandard;
+import com.fanyank.service.AttendanceStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

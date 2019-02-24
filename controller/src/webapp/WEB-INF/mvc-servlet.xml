@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
    <!--配置业务控制器的扫描-->
-   <context:component-scan base-package="com.littlepig.controller"/>
+   <context:component-scan base-package="com.fanyank.controller"/>
 
    <!--控制器基于注解-->
    <!--<mvc:annotation-driven/>-->
@@ -38,11 +38,11 @@
 
 
    <!--如需WebSocket，请启用如下配置-->
-   <bean id="websocket" class="com.littlepig.socket.SocketHandler"/>
+   <bean id="websocket" class="com.fanyank.socket.SocketHandler"/>
    <websocket:handlers>
       <websocket:mapping path="/manager/shop/getorder" handler="websocket"/>
       <websocket:handshake-interceptors>
-         <bean class="com.littlepig.socket.WebSocketInterceptor"/>
+         <bean class="com.fanyank.socket.WebSocketInterceptor"/>
       </websocket:handshake-interceptors>
    </websocket:handlers>
 

@@ -1,6 +1,6 @@
-package com.littlepig.filter;
+package com.fanyank.filter;
 
-import com.littlepig.pojo.User;
+import com.fanyank.pojo.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LittlePigFilter implements Filter {
+public class OASystemFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

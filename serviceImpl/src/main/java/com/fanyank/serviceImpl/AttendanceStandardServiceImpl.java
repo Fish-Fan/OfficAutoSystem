@@ -2,13 +2,14 @@ package com.fanyank.serviceImpl;
 
 import com.fanyank.mapper.AttendanceStandardMapper;
 import com.fanyank.pojo.AttendanceStandard;
+import com.fanyank.service.AttendanceStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AttendanceStandardService {
+public class AttendanceStandardServiceImpl implements AttendanceStandardService{
     @Autowired
     AttendanceStandardMapper attendanceStandardMapper;
 

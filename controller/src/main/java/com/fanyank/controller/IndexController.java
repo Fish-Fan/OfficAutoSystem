@@ -1,17 +1,16 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.littlepig.pojo.Comment;
-import com.littlepig.pojo.Topic;
-import com.littlepig.pojo.User;
-import com.littlepig.service.TopicService;
-import com.littlepig.util.QiniuUtil;
+import com.fanyank.pojo.Comment;
+import com.fanyank.pojo.Topic;
+import com.fanyank.pojo.User;
+import com.fanyank.service.TopicService;
+import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,7 +42,7 @@ public class IndexController {
      * 插入一条新得主题
      */
     @PostMapping("/newtopic")
-    public String insertTopic(Topic topic, HttpSession httpSession,Model model) {
+    public String insertTopic(Topic topic, HttpSession httpSession, Model model) {
         model.addAttribute("node", topicService.findNodeById(topic.getId()));
         model.addAttribute("topicList", topicService.findAllTopic());
         User user = (User)httpSession.getAttribute("current_user");

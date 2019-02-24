@@ -1,27 +1,17 @@
-package com.littlepig.service;
+package com.fanyank.service;
 
-import com.littlepig.mapper.DepartmentMapper;
-import com.littlepig.pojo.DepartmentInfo;
+
+import com.fanyank.pojo.DepartmentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class DepartmentService {
-    @Autowired
-    private DepartmentMapper departmentMapper;
+public interface DepartmentService {
 
-    public void insertDepartmentInfo(DepartmentInfo departmentInfo) {
-        departmentMapper.insertDepartmentInfo(departmentInfo);
-    }
+    public void insertDepartmentInfo(DepartmentInfo departmentInfo);
 
-    public void updateDepartmentInfo(DepartmentInfo departmentInfo) {
-        departmentMapper.updateDepartmentInfo(departmentInfo);
-    }
+    public void updateDepartmentInfo(DepartmentInfo departmentInfo);
 
-    public DepartmentInfo findByDepartmentId(Integer departmentId) {
-        return departmentMapper.findByDepartmentId(departmentId);
-    }
+    public DepartmentInfo findByDepartmentId(Integer departmentId);
 
 }

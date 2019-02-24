@@ -1,10 +1,11 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.littlepig.pojo.Attendance;
-import com.littlepig.pojo.AttendanceStandard;
-import com.littlepig.pojo.User;
-import com.littlepig.service.AttendanceService;
-import com.littlepig.service.AttendanceStandardService;
+
+import com.fanyank.pojo.Attendance;
+import com.fanyank.pojo.AttendanceStandard;
+import com.fanyank.pojo.User;
+import com.fanyank.service.AttendanceService;
+import com.fanyank.service.AttendanceStandardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +20,9 @@ import java.util.List;
 @Controller
 public class AttendanceController {
 	@Autowired
-	AttendanceService attendanceService;
+    AttendanceService attendanceService;
 	@Autowired
-	AttendanceStandardService attendanceStandardService;
+    AttendanceStandardService attendanceStandardService;
 
 
 	@GetMapping("/attendance")

@@ -4,16 +4,14 @@ import com.fanyank.mapper.DepartmentMapper;
 import com.fanyank.mapper.UserMapper;
 import com.fanyank.pojo.DepartmentInfo;
 import com.fanyank.pojo.User;
+import com.fanyank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by lenovo on 2018/3/7.
- */
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService{
     @Autowired
     private UserMapper userMapper;
     @Autowired

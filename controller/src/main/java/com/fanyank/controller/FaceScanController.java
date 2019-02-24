@@ -1,15 +1,18 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
 
-
+import com.fanyank.pojo.GroupUser;
+import com.fanyank.pojo.ScanResult;
+import com.fanyank.pojo.User;
+import com.fanyank.service.FaceService;
+import com.fanyank.util.BaiduUtil;
+import com.fanyank.util.QiniuUtil;
 import com.google.gson.Gson;
-import com.littlepig.pojo.*;
-import com.littlepig.service.FaceService;
-import com.littlepig.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 

@@ -1,16 +1,12 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import javax.servlet.http.HttpSession;
-
-import com.alibaba.fastjson.JSON;
-import com.littlepig.pojo.Position;
-import com.littlepig.pojo.PositionApplication;
-import com.littlepig.pojo.User;
-import com.littlepig.service.NotifyService;
-import com.littlepig.service.PositionService;
-import com.littlepig.service.UserService;
-import com.littlepig.socket.SocketHandler;
-import com.littlepig.util.QiniuUtil;
+import com.fanyank.pojo.Position;
+import com.fanyank.pojo.PositionApplication;
+import com.fanyank.pojo.User;
+import com.fanyank.service.NotifyService;
+import com.fanyank.service.PositionService;
+import com.fanyank.service.UserService;
+import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.socket.TextMessage;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -43,7 +39,7 @@ public class PositionController {
     }
 
     @PostMapping("/position/control")
-    public String getPositionForm(PositionApplication positionApplication,HttpSession session) {
+    public String getPositionForm(PositionApplication positionApplication, HttpSession session) {
         User user = (User) session.getAttribute("current_user");
         int id = positionService.insertPositionApply(positionApplication,user);
         notifyService.managerAdjustMemberPosition(positionApplication.getUserId());

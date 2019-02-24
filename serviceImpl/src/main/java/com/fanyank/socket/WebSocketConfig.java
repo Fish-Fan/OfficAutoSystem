@@ -1,4 +1,4 @@
-package com.littlepig.socket;
+package com.fanyank.socket;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

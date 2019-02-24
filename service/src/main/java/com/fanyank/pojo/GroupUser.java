@@ -1,4 +1,4 @@
-package com.littlepig.pojo;
+package com.fanyank.pojo;
 
 import java.util.Arrays;
 

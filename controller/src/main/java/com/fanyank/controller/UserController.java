@@ -1,13 +1,10 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.alibaba.fastjson.JSON;
+import com.fanyank.dto.UserResult;
+import com.fanyank.pojo.User;
+import com.fanyank.service.UserService;
+import com.fanyank.util.QiniuUtil;
 import com.google.gson.Gson;
-import com.littlepig.dto.UserResult;
-import com.littlepig.pojo.Department;
-import com.littlepig.pojo.Position;
-import com.littlepig.pojo.User;
-import com.littlepig.service.UserService;
-import com.littlepig.util.QiniuUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.List;
+import javax.validation.Valid;
 
 /**
  * Created by lenovo on 2018/3/13.

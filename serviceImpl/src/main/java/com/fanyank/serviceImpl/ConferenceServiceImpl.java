@@ -4,6 +4,7 @@ import com.fanyank.mapper.ConferenceMapper;
 import com.fanyank.mapper.DepartmentMapper;
 import com.fanyank.mapper.UserMapper;
 import com.fanyank.pojo.*;
+import com.fanyank.service.ConferenceService;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ConferenceService {
+public class ConferenceServiceImpl implements ConferenceService{
     @Autowired
     private ConferenceMapper conferenceMapper;
     @Autowired
@@ -21,7 +22,7 @@ public class ConferenceService {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private NotifyService notifyService;
+    private NotifyServiceImpl notifyService;
 
     /**
      * 获取所有会议室

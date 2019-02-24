@@ -1,10 +1,8 @@
-package com.littlepig.mapper;
+package com.fanyank.mapper;
 
-import com.littlepig.pojo.Department;
-import com.littlepig.pojo.DepartmentInfo;
+import com.fanyank.pojo.Department;
+import com.fanyank.pojo.DepartmentInfo;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Created by lenovo on 2018/3/12.

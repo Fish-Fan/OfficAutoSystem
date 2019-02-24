@@ -1,25 +1,26 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.littlepig.pojo.DepartmentInfo;
-import com.littlepig.pojo.Leave;
-import com.littlepig.pojo.User;
-import com.littlepig.service.DepartmentService;
-import com.littlepig.service.LeaveService;
-import com.littlepig.service.NotifyService;
-import com.littlepig.service.UserService;
-import com.littlepig.socket.SocketHandler;
-import com.littlepig.util.QiniuUtil;
+import com.fanyank.pojo.Leave;
+import com.fanyank.pojo.User;
+import com.fanyank.service.DepartmentService;
+import com.fanyank.service.LeaveService;
+import com.fanyank.service.NotifyService;
+import com.fanyank.service.UserService;
+import com.fanyank.socket.SocketHandler;
+import com.fanyank.util.QiniuUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.socket.TextMessage;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 
 @Controller
 public class LeaveController {

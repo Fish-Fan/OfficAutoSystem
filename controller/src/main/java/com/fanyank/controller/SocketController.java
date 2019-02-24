@@ -1,4 +1,4 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

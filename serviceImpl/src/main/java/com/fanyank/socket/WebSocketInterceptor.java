@@ -1,6 +1,6 @@
-package com.littlepig.socket;
+package com.fanyank.socket;
 
-import com.littlepig.pojo.User;
+import com.fanyank.pojo.User;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;

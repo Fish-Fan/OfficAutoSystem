@@ -1,9 +1,11 @@
 package com.fanyank.serviceImpl;
 
-import com.littlepig.mapper.AttendanceMapper;
-import com.littlepig.pojo.Attendance;
-import com.littlepig.pojo.AttendanceStandard;
-import com.littlepig.pojo.User;
+
+import com.fanyank.mapper.AttendanceMapper;
+import com.fanyank.pojo.Attendance;
+import com.fanyank.pojo.AttendanceStandard;
+import com.fanyank.pojo.User;
+import com.fanyank.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +15,11 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class AttendanceService {
+public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     AttendanceMapper attendanceMapper;
     @Autowired
-    AttendanceStandardService attendanceStandardService;
+    AttendanceStandardServiceImpl attendanceStandardService;
 
 
     public void insertAttendance(Attendance attendance){

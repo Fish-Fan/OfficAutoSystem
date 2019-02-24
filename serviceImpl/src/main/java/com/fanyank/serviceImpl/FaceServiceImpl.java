@@ -5,6 +5,7 @@ import com.fanyank.pojo.AttendanceResult;
 import com.fanyank.pojo.GroupUser;
 import com.fanyank.pojo.ScanResult;
 import com.fanyank.pojo.User;
+import com.fanyank.service.FaceService;
 import com.fanyank.util.BaiduUtil;
 import com.fanyank.util.QiniuUtil;
 import com.google.gson.Gson;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.io.UnsupportedEncodingException;
 
 @Service
-public class FaceService {
+public class FaceServiceImpl implements FaceService{
     @Autowired
     private AttendanceServiceImpl attendanceService;
 

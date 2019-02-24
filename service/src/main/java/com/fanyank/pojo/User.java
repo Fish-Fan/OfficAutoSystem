@@ -1,4 +1,4 @@
-package com.littlepig.pojo;
+package com.fanyank.pojo;
 
 /**
  * Created by lenovo on 2018/3/7.

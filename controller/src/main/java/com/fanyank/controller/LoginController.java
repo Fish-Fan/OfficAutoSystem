@@ -1,10 +1,9 @@
-package com.littlepig.controller;
+package com.fanyank.controller;
 
-import com.littlepig.pojo.User;
+import com.fanyank.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 

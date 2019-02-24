@@ -1,9 +1,9 @@
-package com.littlepig.mapper;
+package com.fanyank.mapper;
 
-import com.littlepig.pojo.Conference;
-import com.littlepig.pojo.ConferenceMember;
-import com.littlepig.pojo.ConferenceRoom;
-import com.littlepig.pojo.ConferenceType;
+import com.fanyank.pojo.Conference;
+import com.fanyank.pojo.ConferenceMember;
+import com.fanyank.pojo.ConferenceRoom;
+import com.fanyank.pojo.ConferenceType;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

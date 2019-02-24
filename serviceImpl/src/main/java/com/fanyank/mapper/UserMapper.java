@@ -1,6 +1,6 @@
-package com.littlepig.mapper;
+package com.fanyank.mapper;
 
-import com.littlepig.pojo.User;
+import com.fanyank.pojo.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

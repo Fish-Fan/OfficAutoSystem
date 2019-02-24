@@ -1,8 +1,8 @@
-package com.littlepig.mapper;
+package com.fanyank.mapper;
 
-import com.littlepig.pojo.Comment;
-import com.littlepig.pojo.Node;
-import com.littlepig.pojo.Topic;
+import com.fanyank.pojo.Comment;
+import com.fanyank.pojo.Node;
+import com.fanyank.pojo.Topic;
 
 import java.util.List;
 

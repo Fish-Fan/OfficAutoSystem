@@ -1,6 +1,4 @@
-package com.littlepig.pojo;
-
-import org.apache.ibatis.type.Alias;
+package com.fanyank.pojo;
 
 public class Leave {
 	private int id;
