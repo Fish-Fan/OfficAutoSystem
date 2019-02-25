@@ -6,6 +6,7 @@ import com.fanyank.pojo.User;
 import com.fanyank.service.ConferenceService;
 import com.fanyank.service.NotifyService;
 import com.fanyank.service.UserService;
+import com.fanyank.socket.SocketHandler;
 import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class ConferenceController {
     private UserService userService;
     @Autowired
     private NotifyService notifyService;
+    @Autowired
+    private SocketHandler socketHandler;
 
     /**
      * 新建会议
@@ -51,7 +54,7 @@ public class ConferenceController {
         //更新user表中的current_conference_apply_id
         user.setCurrentConferenceApplyId(conference.getId());
         userService.updateMessageByUsername(user);
-        notifyService.conferenceApplyRequest(afterSave.getRespondentId());
+        notifyService.conferenceApplyRequest(afterSave.getRespondentId(),socketHandler);
         return "redirect:/conference/result?id=" + conference.getId();
     }
 
@@ -78,9 +81,9 @@ public class ConferenceController {
         conference.setRespondentId(user.getId());
         conference.setStatusId(1);
         conference.setResultTime(DateTime.now().toString("yyyy/MM/dd HH:mm:ss"));
-        conferenceService.updateConferenceStatus(conference);
+        conferenceService.updateConferenceStatus(conference,socketHandler);
         String url = "/conference/result?id=" + conference.getId();
-        notifyService.conferenceApplyResponse(conference.getUserId(),url);
+        notifyService.conferenceApplyResponse(conference.getUserId(),url,socketHandler);
         return "{\"status\":\"success\"}";
     }
 
@@ -94,10 +97,10 @@ public class ConferenceController {
         conference.setRespondentId(user.getId());
         conference.setStatusId(2);
         conference.setResultTime(DateTime.now().toString("yyyy/MM/dd HH:mm:ss"));
-        conferenceService.updateConferenceStatus(conference);
+        conferenceService.updateConferenceStatus(conference,socketHandler);
         String url = "/conference/result?id=" + conference.getId();
         Conference afterUpdate = conferenceService.findById(conference.getId());
-        notifyService.conferenceApplyResponse(afterUpdate.getUserId(),url);
+        notifyService.conferenceApplyResponse(afterUpdate.getUserId(),url,socketHandler);
         return "success";
     }
 

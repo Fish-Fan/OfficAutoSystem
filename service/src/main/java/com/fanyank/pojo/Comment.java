@@ -1,8 +1,9 @@
 package com.fanyank.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Comment {
+public class Comment implements Serializable {
     private Integer id;
     private String comment;
     private String createTime;

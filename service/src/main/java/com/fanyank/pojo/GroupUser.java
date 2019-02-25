@@ -1,8 +1,9 @@
 package com.fanyank.pojo;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class GroupUser {
+public class GroupUser implements Serializable {
     private String uid;
     private Double[] scores;
     private String group_id;

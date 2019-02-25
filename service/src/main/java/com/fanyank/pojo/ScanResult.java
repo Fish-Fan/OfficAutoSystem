@@ -1,8 +1,9 @@
 package com.fanyank.pojo;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class ScanResult {
+public class ScanResult implements Serializable {
     private String error_code;
     private Integer result_num;
     private GroupUser[] result;

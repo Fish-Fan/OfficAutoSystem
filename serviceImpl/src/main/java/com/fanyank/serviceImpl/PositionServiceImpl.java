@@ -25,8 +25,6 @@ public class PositionServiceImpl implements PositionService{
     private PositionMapper positionMapper;
     @Autowired
     private DepartmentMapper departmentMapper;
-    @Autowired
-    private SocketHandler socketHandler;
 
     /**
      * 主管，经理进行职位调度

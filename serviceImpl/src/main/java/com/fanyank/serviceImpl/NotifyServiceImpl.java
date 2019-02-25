@@ -16,14 +16,12 @@ import java.util.List;
 public class NotifyServiceImpl implements NotifyService{
     @Autowired
     private NotifyMapper notifyMapper;
-    @Autowired
-    private SocketHandler socketHandler;
 
     /**
      * 会议申请通知
      * @param targetId
      */
-    public void conferenceApplyRequest(Integer targetId) {
+    public void conferenceApplyRequest(Integer targetId,SocketHandler socketHandler) {
         Notify notify = Notify.conferenceApplyRequest(targetId);
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));
@@ -34,7 +32,7 @@ public class NotifyServiceImpl implements NotifyService{
      * @param targetId
      * @param url
      */
-    public void conferenceApplyResponse(Integer targetId,String url) {
+    public void conferenceApplyResponse(Integer targetId,String url,SocketHandler socketHandler) {
         Notify notify = Notify.conferenceApplyResponse(targetId,url);
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));
@@ -45,7 +43,7 @@ public class NotifyServiceImpl implements NotifyService{
      * @param targetId
      * @param conference
      */
-    public void memberAttendConference(Integer targetId, Conference conference) {
+    public void memberAttendConference(Integer targetId, Conference conference,SocketHandler socketHandler) {
         Notify notify = Notify.notifyMemberAttendConference(targetId,conference);
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));
@@ -55,7 +53,7 @@ public class NotifyServiceImpl implements NotifyService{
      * 管理层对成员进行职位调整
      * @param targetId
      */
-    public void managerAdjustMemberPosition(Integer targetId) {
+    public void managerAdjustMemberPosition(Integer targetId,SocketHandler socketHandler) {
         Notify notify = Notify.positionAdjustByManagerResponse(targetId,"/personal_message");
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));
@@ -66,7 +64,7 @@ public class NotifyServiceImpl implements NotifyService{
      * @param targetId
      * @param respondPositionId
      */
-    public void positionApplyRequest(Integer targetId,Integer respondPositionId) {
+    public void positionApplyRequest(Integer targetId,Integer respondPositionId,SocketHandler socketHandler) {
         Notify notify;
         if(respondPositionId == 2) {
             notify = Notify.positionApplyRequest(targetId,"/position/applyinfo/manager");
@@ -82,20 +80,20 @@ public class NotifyServiceImpl implements NotifyService{
      * @param targetId
      * @param url
      */
-    public void positionApplyResponse(Integer targetId,String url) {
+    public void positionApplyResponse(Integer targetId,String url,SocketHandler socketHandler) {
         Notify notify = Notify.positionApplyResponse(targetId,url);
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));
     }
 
     //申请请假通知
-    public void leaveApplyRequest(Integer targetId) {
+    public void leaveApplyRequest(Integer targetId,SocketHandler socketHandler) {
         Notify notify = Notify.leaveApplyRequest(targetId);
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));
     }
     //请假批准通知
-    public void leaveApplyResponse(Integer targetId) {
+    public void leaveApplyResponse(Integer targetId,SocketHandler socketHandler) {
         Notify notify = Notify.leaveApplyResponse(targetId);
         notifyMapper.insertIntoNotify(notify);
         socketHandler.sendMessageToUser(targetId,new TextMessage(JSON.toJSONString(notify)));

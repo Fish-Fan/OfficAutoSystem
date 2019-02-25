@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class Leave {
+import java.io.Serializable;
+
+public class Leave implements Serializable {
 	private int id;
 	private int userId;
 	private String startTime;

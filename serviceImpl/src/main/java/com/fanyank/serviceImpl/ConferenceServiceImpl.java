@@ -5,6 +5,7 @@ import com.fanyank.mapper.DepartmentMapper;
 import com.fanyank.mapper.UserMapper;
 import com.fanyank.pojo.*;
 import com.fanyank.service.ConferenceService;
+import com.fanyank.socket.SocketHandler;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,12 +72,12 @@ public class ConferenceServiceImpl implements ConferenceService{
     /**
      * 变更会议状态
      */
-    public void updateConferenceStatus(Conference conference) {
+    public void updateConferenceStatus(Conference conference, SocketHandler socketHandler) {
         if(conference.getStatusId() == 1) {
             conferenceMapper.updateConferenceStatus(conference);
             List<ConferenceMember> memberList = findAttendMember(conference.getId());
             for(ConferenceMember member : memberList) {
-                notifyService.memberAttendConference(member.getMemberId(),conference);
+                notifyService.memberAttendConference(member.getMemberId(),conference,socketHandler);
             }
         } else {
             conferenceMapper.updateConferenceStatus(conference);

@@ -10,11 +10,12 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class SocketHandler extends AbstractWebSocketHandler {
+public class SocketHandler extends AbstractWebSocketHandler implements Serializable {
     private static final Map<Integer,WebSocketSession> userMap = new HashMap<>();
     @Override
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {

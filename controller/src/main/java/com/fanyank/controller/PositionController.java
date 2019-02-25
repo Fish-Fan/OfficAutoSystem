@@ -6,6 +6,7 @@ import com.fanyank.pojo.User;
 import com.fanyank.service.NotifyService;
 import com.fanyank.service.PositionService;
 import com.fanyank.service.UserService;
+import com.fanyank.socket.SocketHandler;
 import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ public class PositionController {
     private UserService userService;
     @Autowired
     private NotifyService notifyService;
+    @Autowired
+    private SocketHandler socketHandler;
 
     /**
      * 经理，主管调度职员界面
@@ -42,7 +45,7 @@ public class PositionController {
     public String getPositionForm(PositionApplication positionApplication, HttpSession session) {
         User user = (User) session.getAttribute("current_user");
         int id = positionService.insertPositionApply(positionApplication,user);
-        notifyService.managerAdjustMemberPosition(positionApplication.getUserId());
+        notifyService.managerAdjustMemberPosition(positionApplication.getUserId(),socketHandler);
         user.setCurrentPositionApplyId(id);
         userService.updateMessageByUsername(user);
         return "redirect:/position/applyinfo/manager";
@@ -92,7 +95,7 @@ public class PositionController {
         positionService.memberApplyPosition(positionApplication,user);
         PositionApplication apply = positionService.findApplyById(positionApplication.getId());
         model.addAttribute("apply",apply);
-        notifyService.positionApplyRequest(apply.getRespondentId(),apply.getRespond().getPositionId());
+        notifyService.positionApplyRequest(apply.getRespondentId(),apply.getRespond().getPositionId(),socketHandler);
         return "redirect:/position/afterapply?id=" + positionApplication.getId();
     }
 
@@ -109,7 +112,7 @@ public class PositionController {
         User user = (User) session.getAttribute("current_user");
         positionService.bossAgreePositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url,socketHandler);
         return "{\"status\":\"success\"}";
     }
 
@@ -120,7 +123,7 @@ public class PositionController {
         User user = (User) session.getAttribute("current_user");
         positionService.bossRejectPositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url,socketHandler);
         return "{\"status\":\"success\"}";
     }
 
@@ -136,7 +139,7 @@ public class PositionController {
         positionApplication.setReason(reason);
         positionService.managerAgreePositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url,socketHandler);
         return "{\"status\":\"success\"}";
     }
 
@@ -147,7 +150,7 @@ public class PositionController {
         positionApplication.setReason(reason);
         positionService.managerRejectPositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url,socketHandler);
         return "{\"status\":\"success\"}";
     }
 

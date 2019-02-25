@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class ConferenceMember {
+import java.io.Serializable;
+
+public class ConferenceMember implements Serializable {
     private Integer id;
     private Integer conferenceId;
     private Integer memberId;

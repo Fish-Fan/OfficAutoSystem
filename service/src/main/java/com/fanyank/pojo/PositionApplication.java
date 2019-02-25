@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class PositionApplication {
+import java.io.Serializable;
+
+public class PositionApplication implements Serializable {
     private Integer id;
     private Integer userId;
     private Integer positionId;

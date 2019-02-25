@@ -16,12 +16,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet-version}</version>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>com.fanyank</groupId>
@@ -52,18 +46,7 @@
         </dependency>
 
 
-       <!--webSocket-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>${spring-framework.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>${spring-framework.version}</version>
-        </dependency>
 
         <!--apache dbcp-->
         <dependency>
@@ -84,5 +67,12 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring-version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-version}</version>
+        </dependency>
+
     </dependencies>
 </project>

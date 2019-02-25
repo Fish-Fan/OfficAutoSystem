@@ -25,15 +25,15 @@ import java.util.List;
 @Controller
 public class LeaveController {
 	@Autowired
-    LeaveService leaveService;
+    private LeaveService leaveService;
 	@Autowired
-    UserService userService;
+    private UserService userService;
 	@Autowired
-    SocketHandler socketHandler;
+    private DepartmentService departmentService;
 	@Autowired
-    DepartmentService departmentService;
+    private NotifyService notifyService;
 	@Autowired
-    NotifyService notifyService;
+    private SocketHandler socketHandler;
 
 	//插入请假
     @GetMapping("insertLeave")
@@ -66,13 +66,13 @@ public class LeaveController {
         User respondUser = userService.getUserLeader(user1);
         if(leave.getId() != 0){
             leaveService.updateLeave(leave);
-            notifyService.leaveApplyRequest(respondUser.getId());
+            notifyService.leaveApplyRequest(respondUser.getId(),socketHandler);
         }else {
             User user = userService.findById(userId);
             leave.setDepartmentId(user.getDepartment().getId());
             leave.setRespondentId(respondUser.getId());
             leaveService.InsertLeave(leave);
-            notifyService.leaveApplyRequest(respondUser.getId());
+            notifyService.leaveApplyRequest(respondUser.getId(),socketHandler);
         }
         model.addAttribute("leave",new Leave());
 		return "lyj/leave/leave";
@@ -134,7 +134,7 @@ public class LeaveController {
         leave1.setRespondentTime(df.format(respondentTime));
         leaveService.updateLeave(leave1);
         System.out.println("6666666:::::"+leaveService.selectLeaveById(leave).getUserId());
-        notifyService.leaveApplyResponse(leave1.getUserId());
+        notifyService.leaveApplyResponse(leave1.getUserId(),socketHandler);
         int departmentId = leave.getDepartmentId();
         List<Leave> leaves = leaveService.selectLeaveByStateAndDepartId(departmentId);//查询还未审批的请假记录
         model.addAttribute("leaves",leaves);
@@ -150,7 +150,7 @@ public class LeaveController {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         leave1.setRespondentTime(df.format(respondentTime));
         leaveService.updateLeave(leave1);
-        notifyService.leaveApplyResponse(leave1.getUserId());
+        notifyService.leaveApplyResponse(leave1.getUserId(),socketHandler);
         int departmentId = leave.getDepartmentId();
         List<Leave> leaves = leaveService.selectLeaveByStateAndDepartId(departmentId);//查询还未审批的请假记录
         model.addAttribute("leaves",leaves);

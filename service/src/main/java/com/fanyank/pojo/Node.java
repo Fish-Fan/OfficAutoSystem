@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
     private Integer id;
     private String nodeName;
 

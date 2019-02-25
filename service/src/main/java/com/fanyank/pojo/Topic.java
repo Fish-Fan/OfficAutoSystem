@@ -1,8 +1,9 @@
 package com.fanyank.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Topic {
+public class Topic implements Serializable {
     private Integer id;
     private String title;
     private String createTime;

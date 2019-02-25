@@ -1,7 +1,8 @@
 package com.fanyank.pojo;
 
-public class States
-{
+import java.io.Serializable;
+
+public class States implements Serializable {
     int id;
     String states;
 

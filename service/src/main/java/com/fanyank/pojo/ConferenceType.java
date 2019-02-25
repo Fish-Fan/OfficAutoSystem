@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class ConferenceType {
+import java.io.Serializable;
+
+public class ConferenceType implements Serializable {
     private Integer id;
     private String conferenceType;
 

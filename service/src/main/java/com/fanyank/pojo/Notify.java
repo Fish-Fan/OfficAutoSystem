@@ -2,7 +2,9 @@ package com.fanyank.pojo;
 
 import org.joda.time.DateTime;
 
-public class Notify {
+import java.io.Serializable;
+
+public class Notify implements Serializable {
     enum Type {
         success,info,warning,error
     }

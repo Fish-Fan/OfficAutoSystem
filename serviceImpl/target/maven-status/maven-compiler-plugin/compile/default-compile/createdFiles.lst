@@ -11,13 +11,10 @@ com/fanyank/serviceImpl/UserServiceImpl.class
 com/fanyank/mapper/LeaveMapper.class
 com/fanyank/serviceImpl/DepartmentServiceImpl.class
 com/fanyank/mapper/AttendanceMapper.class
-com/fanyank/socket/WebSocketConfig.class
 com/fanyank/mapper/PositionMapper.class
 com/fanyank/serviceImpl/LeaveServiceImpl.class
 com/fanyank/mapper/StatesMapper.class
 com/fanyank/serviceImpl/FaceServiceImpl.class
 com/fanyank/serviceImpl/NotifyServiceImpl.class
-com/fanyank/socket/SocketHandler.class
 com/fanyank/mapper/NotifyMapper.class
-com/fanyank/socket/WebSocketInterceptor.class
 com/fanyank/serviceImpl/ConferenceServiceImpl.class

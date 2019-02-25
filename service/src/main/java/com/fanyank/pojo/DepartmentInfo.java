@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class DepartmentInfo {
+import java.io.Serializable;
+
+public class DepartmentInfo implements Serializable {
     private Integer id;
     private Integer departmentId;
     private Integer departmentManagerId;

@@ -1,9 +1,11 @@
 package com.fanyank.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by lenovo on 2018/3/12.
  */
-public class Department {
+public class Department implements Serializable {
     private int id;
     private String department;
 

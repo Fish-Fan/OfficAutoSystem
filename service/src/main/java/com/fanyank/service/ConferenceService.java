@@ -1,6 +1,7 @@
 package com.fanyank.service;
 
 import com.fanyank.pojo.*;
+import com.fanyank.socket.SocketHandler;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public interface ConferenceService {
     /**
      * 变更会议状态
      */
-    public void updateConferenceStatus(Conference conference);
+    public void updateConferenceStatus(Conference conference, SocketHandler socketHandler);
 
     /**
      * 根据ID查找会议

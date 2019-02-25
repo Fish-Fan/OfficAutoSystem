@@ -1,6 +1,5 @@
 com/fanyank/controller/AttendanceController.class
 com/fanyank/fliter/OASystemFilter.class
-com/fanyank/socket/WebSocketConfig.class
 com/fanyank/controller/IndexController.class
 com/fanyank/controller/FaceScanController.class
 com/fanyank/controller/ConferenceController.class
@@ -10,8 +9,6 @@ com/fanyank/controller/NotifyController.class
 com/fanyank/controller/AttendanceStandardController.class
 com/fanyank/controller/LeaveController.class
 com/fanyank/dto/UserResult.class
-com/fanyank/socket/SocketHandler.class
-com/fanyank/socket/WebSocketInterceptor.class
 com/fanyank/controller/LoginController.class
 com/fanyank/controller/SocketController.class
 com/fanyank/controller/PositionController.class

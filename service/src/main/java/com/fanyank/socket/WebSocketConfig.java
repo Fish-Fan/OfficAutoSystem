@@ -11,12 +11,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 /**
  * Created by yanfeng-mac on 2017/7/6.
  */
-@Configuration
-@EnableWebMvc
-@EnableWebSocket
+//@Configuration
+//@EnableWebMvc
+//@EnableWebSocket
 public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {
 
-    @Autowired
     private SocketHandler socketHandler;
 
     @Override

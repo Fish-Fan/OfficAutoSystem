@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class AttendanceResult {
+import java.io.Serializable;
+
+public class AttendanceResult implements Serializable {
     private String result;
     private String voice;
     private String scores;

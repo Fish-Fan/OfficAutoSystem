@@ -1,6 +1,8 @@
 package com.fanyank.pojo;
 
-public class AttendanceStandard {
+import java.io.Serializable;
+
+public class AttendanceStandard implements Serializable {
     int id;
     String workTime;
     String closingTime;

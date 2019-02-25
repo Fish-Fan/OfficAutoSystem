@@ -4,14 +4,11 @@
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/FaceScanController.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/SocketController.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/LeaveController.java
-/Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/socket/WebSocketInterceptor.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/IndexController.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/UserController.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/fliter/OASystemFilter.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/dto/UserResult.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/NotifyController.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/TopicController.java
-/Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/socket/SocketHandler.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/ConferenceController.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/controller/PositionController.java
-/Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/controller/src/main/java/com/fanyank/socket/WebSocketConfig.java
