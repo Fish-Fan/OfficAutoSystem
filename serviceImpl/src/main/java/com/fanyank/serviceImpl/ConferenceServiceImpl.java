@@ -44,7 +44,7 @@ public class ConferenceServiceImpl implements ConferenceService{
     /**
      * 存储会议
      */
-    public void saveConference(Conference conference) {
+    public Conference saveConference(Conference conference) {
         String[] members = conference.getPersons().split(",");
         List<ConferenceMember> memberList = new ArrayList<>();
 
@@ -60,6 +60,7 @@ public class ConferenceServiceImpl implements ConferenceService{
             memberList.add(new ConferenceMember(conference.getId(),memberId));
         }
         conferenceMapper.saveMember(memberList);
+        return conference;
     }
 
     /**
@@ -72,12 +73,12 @@ public class ConferenceServiceImpl implements ConferenceService{
     /**
      * 变更会议状态
      */
-    public void updateConferenceStatus(Conference conference, SocketHandler socketHandler) {
+    public void updateConferenceStatus(Conference conference) {
         if(conference.getStatusId() == 1) {
             conferenceMapper.updateConferenceStatus(conference);
             List<ConferenceMember> memberList = findAttendMember(conference.getId());
             for(ConferenceMember member : memberList) {
-                notifyService.memberAttendConference(member.getMemberId(),conference,socketHandler);
+                notifyService.memberAttendConference(member.getMemberId(),conference);
             }
         } else {
             conferenceMapper.updateConferenceStatus(conference);

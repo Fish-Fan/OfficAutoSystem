@@ -1,12 +1,15 @@
 package com.fanyank.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.fanyank.pojo.Conference;
+import com.fanyank.pojo.Notify;
 import com.fanyank.pojo.User;
 import com.fanyank.service.ConferenceService;
 import com.fanyank.service.NotifyService;
 import com.fanyank.service.UserService;
 import com.fanyank.socket.SocketHandler;
+import com.fanyank.util.NotifySocketHelper;
 import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.socket.TextMessage;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -27,7 +31,7 @@ public class ConferenceController {
     @Autowired
     private UserService userService;
     @Autowired
-    private NotifyService notifyService;
+    private NotifySocketHelper notifySocketHelper;
     @Autowired
     private SocketHandler socketHandler;
 
@@ -48,13 +52,14 @@ public class ConferenceController {
     public String afterNewConference(Conference conference, Model model, HttpSession session) {
         User user = (User) session.getAttribute("current_user");
         conference.setUserId(user.getId());
-        conferenceService.saveConference(conference);
+        conference = conferenceService.saveConference(conference);
         Conference afterSave = conferenceService.findById(conference.getId());
         model.addAttribute("conference",afterSave);
         //更新user表中的current_conference_apply_id
         user.setCurrentConferenceApplyId(conference.getId());
         userService.updateMessageByUsername(user);
-        notifyService.conferenceApplyRequest(afterSave.getRespondentId(),socketHandler);
+        Notify notify = notifySocketHelper.conferenceApplyRequest(afterSave.getRespondentId());
+        socketHandler.sendMessageToUser(notify.getUserId(),new TextMessage(JSON.toJSONString(notify)));
         return "redirect:/conference/result?id=" + conference.getId();
     }
 
@@ -81,9 +86,9 @@ public class ConferenceController {
         conference.setRespondentId(user.getId());
         conference.setStatusId(1);
         conference.setResultTime(DateTime.now().toString("yyyy/MM/dd HH:mm:ss"));
-        conferenceService.updateConferenceStatus(conference,socketHandler);
+        conferenceService.updateConferenceStatus(conference);
         String url = "/conference/result?id=" + conference.getId();
-        notifyService.conferenceApplyResponse(conference.getUserId(),url,socketHandler);
+        notifySocketHelper.conferenceApplyResponse(conference.getUserId(),url);
         return "{\"status\":\"success\"}";
     }
 
@@ -97,10 +102,10 @@ public class ConferenceController {
         conference.setRespondentId(user.getId());
         conference.setStatusId(2);
         conference.setResultTime(DateTime.now().toString("yyyy/MM/dd HH:mm:ss"));
-        conferenceService.updateConferenceStatus(conference,socketHandler);
+        conferenceService.updateConferenceStatus(conference);
         String url = "/conference/result?id=" + conference.getId();
         Conference afterUpdate = conferenceService.findById(conference.getId());
-        notifyService.conferenceApplyResponse(afterUpdate.getUserId(),url,socketHandler);
+        notifySocketHelper.conferenceApplyResponse(afterUpdate.getUserId(),url);
         return "success";
     }
 

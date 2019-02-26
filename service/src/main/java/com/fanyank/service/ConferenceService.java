@@ -1,10 +1,6 @@
 package com.fanyank.service;
 
 import com.fanyank.pojo.*;
-import com.fanyank.socket.SocketHandler;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,7 +23,7 @@ public interface ConferenceService {
     /**
      * 存储会议
      */
-    public void saveConference(Conference conference);
+    public Conference saveConference(Conference conference);
 
     /**
      * 查找所有会议
@@ -36,7 +32,7 @@ public interface ConferenceService {
     /**
      * 变更会议状态
      */
-    public void updateConferenceStatus(Conference conference, SocketHandler socketHandler);
+    public void updateConferenceStatus(Conference conference);
 
     /**
      * 根据ID查找会议

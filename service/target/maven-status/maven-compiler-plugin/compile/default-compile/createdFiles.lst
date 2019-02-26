@@ -17,7 +17,6 @@ com/fanyank/util/GsonUtils.class
 com/fanyank/service/FaceService.class
 com/fanyank/util/Base64Util.class
 com/fanyank/service/AttendanceService.class
-com/fanyank/socket/WebSocketConfig.class
 com/fanyank/util/BaiduUtil.class
 com/fanyank/pojo/Notify.class
 com/fanyank/util/HttpUtil.class
@@ -35,7 +34,6 @@ com/fanyank/pojo/Leave.class
 com/fanyank/pojo/States.class
 com/fanyank/socket/SocketHandler.class
 com/fanyank/pojo/Position.class
-com/fanyank/socket/WebSocketInterceptor.class
 com/fanyank/pojo/AttendanceStandard.class
 com/fanyank/service/AttendanceStandardService.class
 com/fanyank/pojo/AttendanceResult.class
