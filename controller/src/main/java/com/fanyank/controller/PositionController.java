@@ -7,7 +7,6 @@ import com.fanyank.service.NotifyService;
 import com.fanyank.service.PositionService;
 import com.fanyank.service.UserService;
 import com.fanyank.socket.SocketHandler;
-import com.fanyank.util.NotifySocketHelper;
 import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +26,7 @@ public class PositionController {
     @Autowired
     private UserService userService;
     @Autowired
-    private NotifySocketHelper notifySocketHelper;
-    @Autowired
-    private SocketHandler socketHandler;
+    private NotifyService notifyService;
 
     /**
      * 经理，主管调度职员界面
@@ -46,7 +43,7 @@ public class PositionController {
     public String getPositionForm(PositionApplication positionApplication, HttpSession session) {
         User user = (User) session.getAttribute("current_user");
         int id = positionService.insertPositionApply(positionApplication,user);
-        notifySocketHelper.managerAdjustMemberPosition(positionApplication.getUserId());
+        notifyService.managerAdjustMemberPosition(positionApplication.getUserId());
         user.setCurrentPositionApplyId(id);
         userService.updateMessageByUsername(user);
         return "redirect:/position/applyinfo/manager";
@@ -96,7 +93,7 @@ public class PositionController {
         positionService.memberApplyPosition(positionApplication,user);
         PositionApplication apply = positionService.findApplyById(positionApplication.getId());
         model.addAttribute("apply",apply);
-        notifySocketHelper.positionApplyRequest(apply.getRespondentId(),apply.getRespond().getPositionId());
+        notifyService.positionApplyRequest(apply.getRespondentId(),apply.getRespond().getPositionId());
         return "redirect:/position/afterapply?id=" + positionApplication.getId();
     }
 
@@ -113,7 +110,7 @@ public class PositionController {
         User user = (User) session.getAttribute("current_user");
         positionService.bossAgreePositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifySocketHelper.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
         return "{\"status\":\"success\"}";
     }
 
@@ -124,7 +121,7 @@ public class PositionController {
         User user = (User) session.getAttribute("current_user");
         positionService.bossRejectPositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifySocketHelper.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
         return "{\"status\":\"success\"}";
     }
 
@@ -140,7 +137,7 @@ public class PositionController {
         positionApplication.setReason(reason);
         positionService.managerAgreePositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifySocketHelper.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
         return "{\"status\":\"success\"}";
     }
 
@@ -151,7 +148,7 @@ public class PositionController {
         positionApplication.setReason(reason);
         positionService.managerRejectPositionApply(positionApplication);
         String url = "/position/afterapply?id=" + positionApplication.getId();
-        notifySocketHelper.positionApplyResponse(positionApplication.getUserId(),url);
+        notifyService.positionApplyResponse(positionApplication.getUserId(),url);
         return "{\"status\":\"success\"}";
     }
 

@@ -9,7 +9,6 @@ import com.fanyank.service.ConferenceService;
 import com.fanyank.service.NotifyService;
 import com.fanyank.service.UserService;
 import com.fanyank.socket.SocketHandler;
-import com.fanyank.util.NotifySocketHelper;
 import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +30,7 @@ public class ConferenceController {
     @Autowired
     private UserService userService;
     @Autowired
-    private NotifySocketHelper notifySocketHelper;
-    @Autowired
-    private SocketHandler socketHandler;
+    private NotifyService notifyService;
 
     /**
      * 新建会议
@@ -58,8 +55,7 @@ public class ConferenceController {
         //更新user表中的current_conference_apply_id
         user.setCurrentConferenceApplyId(conference.getId());
         userService.updateMessageByUsername(user);
-        Notify notify = notifySocketHelper.conferenceApplyRequest(afterSave.getRespondentId());
-        socketHandler.sendMessageToUser(notify.getUserId(),new TextMessage(JSON.toJSONString(notify)));
+        Notify notify = notifyService.conferenceApplyRequest(afterSave.getRespondentId());
         return "redirect:/conference/result?id=" + conference.getId();
     }
 
@@ -88,7 +84,7 @@ public class ConferenceController {
         conference.setResultTime(DateTime.now().toString("yyyy/MM/dd HH:mm:ss"));
         conferenceService.updateConferenceStatus(conference);
         String url = "/conference/result?id=" + conference.getId();
-        notifySocketHelper.conferenceApplyResponse(conference.getUserId(),url);
+        notifyService.conferenceApplyResponse(conference.getUserId(),url);
         return "{\"status\":\"success\"}";
     }
 
@@ -105,7 +101,7 @@ public class ConferenceController {
         conferenceService.updateConferenceStatus(conference);
         String url = "/conference/result?id=" + conference.getId();
         Conference afterUpdate = conferenceService.findById(conference.getId());
-        notifySocketHelper.conferenceApplyResponse(afterUpdate.getUserId(),url);
+        notifyService.conferenceApplyResponse(afterUpdate.getUserId(),url);
         return "success";
     }
 
