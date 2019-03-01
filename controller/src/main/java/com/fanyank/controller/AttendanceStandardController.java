@@ -22,14 +22,14 @@ public class AttendanceStandardController {
 	@GetMapping("/insertAttendanceStandard")
 	public  String insertAttendanceStandardJSP(Model model, AttendanceStandard attendanceStandard){
 		model.addAttribute("attendanceStandard",attendanceStandard);
-		return "lyj/attendanceStandard/attendanceStandard";
+		return "attendance/attendanceStandard";
 	}
     @GetMapping("updateAttendanceStandard1")
     public  String updateAttendanceStandard1(@RequestParam("id") int id, Model model){
         AttendanceStandard attendanceStandard = attendanceStandardService.selectAttendanceStandardById(id);
         System.out.println("进入此方法并得到了该标准的值::::"+attendanceStandard.toString());
         model.addAttribute("attendanceStandard",attendanceStandard);
-        return "lyj/attendanceStandard/attendanceStandard";
+        return "attendance/attendanceStandard";
     }
     /*插入签到标准*/
 	@PostMapping("/insertAttendanceStandard")
@@ -46,7 +46,7 @@ public class AttendanceStandardController {
         }
         List<AttendanceStandard> attendanceStandards = attendanceStandardService.selectAllAttendanceStandard();
         model.addAttribute("attendanceStandards",attendanceStandards);
-		return "lyj/attendanceStandard/attendanceStandard";
+		return "attendance/attendanceStandard";
 	}
     /*更新签到标准*/
     @GetMapping("updateAttendanceStandard")
@@ -62,7 +62,7 @@ public class AttendanceStandardController {
     public  String selectAttendanceStandard(Model model,AttendanceStandard attendanceStandard) {
         List<AttendanceStandard> attendanceStandards = attendanceStandardService.selectAllAttendanceStandard();
         model.addAttribute("attendanceStandards",attendanceStandards);
-        return "lyj/attendanceStandard/attendanceStandardRecord";
+        return "attendance/attendanceStandardRecord";
     }
 
 	/*删除指定签到标准*/
@@ -72,6 +72,6 @@ public class AttendanceStandardController {
         attendanceStandardService.deleteAttendanceStandard(id);
         List<AttendanceStandard> attendanceStandards = attendanceStandardService.selectAllAttendanceStandard();
         model.addAttribute("attendanceStandards",attendanceStandards);
-        return "lyj/attendanceStandard/attendanceStandardRecord";
+        return "attendance/attendanceStandardRecord";
     }
 }

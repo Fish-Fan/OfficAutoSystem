@@ -25,6 +25,7 @@
     <dubbo:reference id="positionService" interface="com.fanyank.service.PositionService" check="false"/>
     <dubbo:reference id="topicService" interface="com.fanyank.service.TopicService" check="false"/>
     <dubbo:reference id="userService" interface="com.fanyank.service.UserService" check="false"/>
+    <dubbo:reference id="imService" interface="com.fanyank.service.IMService" check="false"/>
 
 
 </beans>

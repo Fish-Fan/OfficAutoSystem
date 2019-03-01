@@ -8,16 +8,16 @@ import com.fanyank.pojo.Position;
 import com.fanyank.pojo.PositionApplication;
 import com.fanyank.pojo.User;
 import com.fanyank.service.PositionService;
-import com.fanyank.socket.SocketHandler;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Repository
 public class PositionServiceImpl implements PositionService{
     @Autowired
     private UserMapper userMapper;

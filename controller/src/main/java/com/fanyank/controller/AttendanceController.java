@@ -46,7 +46,7 @@ public class AttendanceController {
                 }
              }
         }
-        return "lyj/attendance/sign";
+        return "attendance/sign";
 	}
 	@GetMapping("/sign")
 	public  String sign(Model model , HttpSession session){
@@ -85,7 +85,7 @@ public class AttendanceController {
             attendanceService.insertAttendance(attendance);
             attendance = attendanceService.selectAttendanceBySignTime(attendance);
             model.addAttribute(attendance);
-            return "lyj/attendance/sign";
+            return "attendance/sign";
 	}
 
     @GetMapping("/signout")
@@ -126,7 +126,7 @@ public class AttendanceController {
         attendanceService.updateAttendance(attendance);
         attendance  = attendanceService.selectAttendanceBySignoutTime(attendance);
         model.addAttribute(attendance);
-        return "lyj/attendance/signout";
+        return "attendance/signout";
     }
 
 	@GetMapping("selectAttendance")
@@ -135,7 +135,7 @@ public class AttendanceController {
         attendance.setUserId(user.getId());
         List<Attendance> attendances = attendanceService.selectAttendance(attendance);
         model.addAttribute("attendances",attendances);
-        return "/lyj/attendance/attendancerecord";
+        return "attendance/attendancerecord";
 	}
 
 

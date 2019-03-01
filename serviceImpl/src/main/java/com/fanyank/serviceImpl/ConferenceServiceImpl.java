@@ -5,16 +5,15 @@ import com.fanyank.mapper.DepartmentMapper;
 import com.fanyank.mapper.UserMapper;
 import com.fanyank.pojo.*;
 import com.fanyank.service.ConferenceService;
-import com.fanyank.socket.SocketHandler;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Repository
 public class ConferenceServiceImpl implements ConferenceService{
     @Autowired
     private ConferenceMapper conferenceMapper;

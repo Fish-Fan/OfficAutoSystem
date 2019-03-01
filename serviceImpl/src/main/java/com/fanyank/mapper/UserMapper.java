@@ -14,8 +14,9 @@ public interface UserMapper {
     User selectUserByUsername(String username);
     User selectMessageByUsername(String username);
     int updateMessageByUsername(User user);
-    int  updateSignByUsername(String username);
-    int exitSignByUsername(String username);
+    int  setOnlineStatusByUsername(String username);
+    int setExitStatusByUsername(String username);
+    int setHideStatusByUsername(String username);
     User selectUserByEmail(String email);
     int updatePasswordByEmail(User user);
     int updatePasswordByUsername(User user);
@@ -35,4 +36,6 @@ public interface UserMapper {
      * @return
      */
     void updateUserPosition(User user);
+
+    List<User> findUserByDepartment(Integer departmentId);
 }

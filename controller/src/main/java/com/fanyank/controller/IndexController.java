@@ -21,7 +21,7 @@ public class IndexController {
 
     @GetMapping("index")
     public String Index() {
-        return "css/index";
+        return "framework/index";
     }
 
 
@@ -29,14 +29,14 @@ public class IndexController {
 
     @GetMapping("/standard")
     public String standard() {
-        return "fyf/standard";
+        return "basic/standard";
     }
 
     @GetMapping("/forum")
     public String forum(Model model) {
 
         model.addAttribute("topicList", topicService.findAllTopic());
-        return "css/forum_main";
+        return "forum/forum_main";
     }
     /**
      * 插入一条新得主题
@@ -62,7 +62,7 @@ public class IndexController {
 
         model.addAttribute("commentList",topicService.findCommentByTopicId2(topicId));
         model.addAttribute("topic",topicService.findTopicId(topicId));
-        return "css/forum_post";
+        return "forum/forum_post";
     }
 
     /**
@@ -72,7 +72,7 @@ public class IndexController {
     public String findAllNode(Model model) {
         model.addAttribute("nodeList", topicService.findAllNode());
         model.addAttribute("token", QiniuUtil.getToken());
-        return "css/topic";
+        return "forum/topic";
     }
 
 

@@ -33,47 +33,47 @@ public class UserController {
             String selectPassword  = realuser.getPassword();
             if(password.equals(selectPassword)){/*
                         model.addAttribute("msg", "登录成功!");*/
-                userService.updateSignByUsername(realuser.getUsername());
+                userService.setOnlineStatusByUsername(realuser.getUsername());
                 session.setAttribute("current_user",realuser);
                 model.addAttribute("user",realuser);
-                return "gsy/personal_message";
+                return "basic/personal_message";
                 //登录成功
             }else{
                 //登录失败
                 model.addAttribute("mistake", "密码错误！");
-                return "gsy/login";
+                return "basic/login";
             }
         }else {
             model.addAttribute("mistake", "用户不存在！");
-            return "gsy/login";
+            return "basic/login";
         }
     }
     //用户退出销毁session 跳转到登录页
     @RequestMapping("/user/userExit")
     public String userExit(User user,HttpSession session){
         User sessionUser = (User) session.getAttribute("current_user");
-        userService.exitSignByUsername(sessionUser.getUsername());
+        userService.setExitStatusByUsername(sessionUser.getUsername());
         session.invalidate();
-        return "gsy/login";
+        return "basic/login";
     }
     @RequestMapping(value="/user/insertUser", method =RequestMethod.GET)
     public String gotoInsert(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "gsy/register";
+        return "basic/register";
     }
 
     @RequestMapping(value="/user/insertUser", method = RequestMethod.POST)
     public String insertUser(Model model, User user) {
         int r = userService.insertUser(user);
         model.addAttribute("user",user);
-        return "gsy/login";
+        return "basic/login";
     }
 
     @RequestMapping(value="/user/forgetPassword",method = RequestMethod.GET)
     public String forgettPassword(Model model,User user){
         model.addAttribute("user",user);
-        return "gsy/forget_password";
+        return "basic/forget_password";
     }
 
     @RequestMapping(value = "/user/forgetPassword",method = RequestMethod.POST)
@@ -84,11 +84,11 @@ public class UserController {
             session.setAttribute("current_email",em);
             user.setPassword(null);
             model.addAttribute("user",user);
-            return "gsy/update_password";//验证成功
+            return "basic/update_password";//验证成功
         }
         else{
             model.addAttribute("mistake","邮箱输入错误！");
-            return "gsy/forget_password";
+            return "basic/forget_password";
         }
     }
 
@@ -99,7 +99,7 @@ public class UserController {
         System.out.println(user);
         user.setPassword(null);
         model.addAttribute("user",user);
-        return "gsy/update_passwords";
+        return "basic/update_passwords";
     }
 
     @RequestMapping(value = "/user/updatePasswords",method = RequestMethod.POST)//个人信息内修改密码
@@ -109,17 +109,17 @@ public class UserController {
         String pwd = user.getPassword();
         if (pwd == null || pwd == ""){
             model.addAttribute("mistake","密码格式有误！请重新输入！");
-            return "gsy/update_passwords";
+            return "basic/update_passwords";
         }else {
             user0.setPassword(user.getPassword());
             int us = userService.updatePasswordByUsername(user0);
             System.out.println(user0);
-            userService.exitSignByUsername(user0.getUsername());
+            userService.setExitStatusByUsername(user0.getUsername());
             session.invalidate();
             user.setUsername(null);
             user.setPassword(null);
             model.addAttribute("user",user);
-            return "gsy/login";
+            return "basic/login";
         }
     }
 
@@ -130,14 +130,14 @@ public class UserController {
         String pwd = user.getPassword();
         if (pwd == null || pwd == ""){
             model.addAttribute("mistake","密码格式有误！请重新输入！");
-            return "gsy/update_password";
+            return "basic/update_password";
         }else {
             user1.setPassword(user.getPassword());
             int us = userService.updatePasswordByEmail(user1);
             System.out.println(user1);
             user.setPassword(null);
             model.addAttribute("user",user);
-            return "gsy/login";
+            return "basic/login";
         }
     }
 
@@ -148,7 +148,7 @@ public class UserController {
         System.out.println(user);
         model.addAttribute("user",user);
         model.addAttribute("token", QiniuUtil.getToken());
-        return "gsy/message";
+        return "basic/message";
 }
     @RequestMapping(value="/updateMessage",method = RequestMethod.POST)
     public String updateMessage(Model model,User user,HttpSession session, HttpServletRequest  req){
@@ -163,7 +163,7 @@ public class UserController {
         User newuser = userService.selectUserByUsername(user.getUsername());
         session1.setAttribute("new_user",newuser);
         model.addAttribute("user",newuser);
-        return "gsy/personal_message";
+        return "basic/personal_message";
     }
 
     @PostMapping("/updateAvatar")

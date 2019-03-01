@@ -42,7 +42,7 @@ public class ConferenceController {
         model.addAttribute("token", QiniuUtil.getToken());
         model.addAttribute("roomList",conferenceService.getAllRoom());
         model.addAttribute("conferenceTypeList",conferenceService.getAllType());
-        return "fyf/conference/conference";
+        return "conference/conference";
     }
 
     @PostMapping("/newconference")
@@ -68,7 +68,7 @@ public class ConferenceController {
     public String conferenceManager(Model model) {
         List<Conference> conferenceList = conferenceService.findAll();
         model.addAttribute("conferenceList",conferenceList);
-        return "fyf/conference/conferenceManager";
+        return "conference/conferenceManager";
     }
 
     /**
@@ -108,7 +108,7 @@ public class ConferenceController {
     @GetMapping("/conference/result")
     public String conferenceResult(Integer id,Model model) {
         model.addAttribute("conference",conferenceService.findById(id));
-        return "fyf/conference/afterConference";
+        return "conference/afterConference";
     }
 
 

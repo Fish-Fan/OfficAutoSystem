@@ -5,14 +5,12 @@ import com.fanyank.mapper.NotifyMapper;
 import com.fanyank.pojo.Conference;
 import com.fanyank.pojo.Notify;
 import com.fanyank.service.NotifyService;
-import com.fanyank.socket.SocketHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.socket.TextMessage;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Service
+@Repository
 public class NotifyServiceImpl implements NotifyService{
     @Autowired
     private NotifyMapper notifyMapper;

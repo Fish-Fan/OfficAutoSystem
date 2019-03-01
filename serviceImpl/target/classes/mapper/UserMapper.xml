@@ -15,6 +15,10 @@
         <result property="departmentId" column="department_id"/>
         <result property="currentConferenceApplyId" column="current_conference_apply_id"/>
         <result property="currentPositionApplyId" column="current_position_apply_id"/>
+        <result property="sign" column="sign"/>
+        <result property="avatar" column="avatar"/>
+        <result property="desc" column="desc"/>
+        <result property="status" column="status"/>
         <association property="position" column="position_id" select="com.fanyank.mapper.PositionMapper.selectPositionById"></association>
         <association property="department" column="department_id" select="com.fanyank.mapper.DepartmentMapper.selectDepartmentById"></association>
 
@@ -39,12 +43,16 @@
         UPDATE `user`  set  password = #{password}
         WHERE username = #{username}
     </update>
-    <update id="updateSignByUsername" parameterType="string">
-        UPDATE `user`  set  sign = 1
+    <update id="setOnlineStatusByUsername" parameterType="string">
+        UPDATE `user`  set  status = 'online'
         WHERE username = #{username}
     </update>
-    <update id="exitSignByUsername" parameterType="string">
-        UPDATE `user`  set  sign = 0
+    <update id="setExitStatusByUsername" parameterType="string">
+        UPDATE `user`  set  status = 'offline'
+        WHERE username = #{username}
+    </update>
+    <update id="setHideStatusByUsername" parameterType="string">
+        UPDATE `user`  set  status = 'hide'
         WHERE username = #{username}
     </update>
     <update id="updateMessageByUsername" parameterType="user">
@@ -71,6 +79,10 @@
 
     <select id="findUsernameById" parameterType="int" resultType="string">
         select username from `user` where id = #{id}
+    </select>
+
+    <select id="findUserByDepartment" parameterType="int" resultType="user">
+        select * from `user` where department_id = #{departmentId}
     </select>
 
     <!--更新职员职位信息-->

@@ -4,9 +4,10 @@ import com.fanyank.mapper.DepartmentMapper;
 import com.fanyank.pojo.DepartmentInfo;
 import com.fanyank.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-@Service
+@Repository
 public class DepartmentServiceImpl implements DepartmentService{
     @Autowired
     private DepartmentMapper departmentMapper;

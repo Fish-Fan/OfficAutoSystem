@@ -36,7 +36,7 @@ public class LeaveController {
     public  String leave(Model model,Leave leave){
         model.addAttribute("token", QiniuUtil.getToken());
         model.addAttribute("leave",leave);
-        return "lyj/leave/leave";
+        return "leave/leave";
     }
     @GetMapping("insertLeave1")
     public String leave(Model model,Leave leave,@RequestParam("id") int id){
@@ -46,11 +46,11 @@ public class LeaveController {
         //判断该申请是否可以修改
         if(leave1.getStatesId() == 0) {
             model.addAttribute("leave",leave1);
-            return "lyj/leave/leave";
+            return "leave/leave";
         }else {
             List<Leave> leaves = leaveService.selectLeave(leave);
             model.addAttribute("leaves",leaves);
-            return "lyj/leave/leaverecord";
+            return "leave/leaverecord";
         }
     }
 	@PostMapping("insertLeave")
@@ -71,7 +71,7 @@ public class LeaveController {
             notifyService.leaveApplyRequest(respondUser.getId());
         }
         model.addAttribute("leave",new Leave());
-		return "lyj/leave/leave";
+		return "leave/leave";
 	}
 	//删除记录
 	@GetMapping("deleteLeave")
@@ -98,7 +98,7 @@ public class LeaveController {
         leave.setUserId(user.getId());
         List<Leave> leaves = leaveService.selectLeave(leave);
         model.addAttribute("leaves",leaves);
-        return "lyj/leave/leaverecord";
+        return "leave/leaverecord";
     }
 
     //查找leave记录的详情
@@ -107,7 +107,7 @@ public class LeaveController {
         System.out.println("**********进入查询请假详情*********");
         leave.setId(id);
         model.addAttribute("leave",leaveService.selectLeaveById(leave));
-        return "lyj/leave/leave";
+        return "leave/leave";
     }
 
     //带有权限的请假审批
@@ -117,7 +117,7 @@ public class LeaveController {
         int departmentId = user.getDepartment().getId();
         List<Leave> leaves = leaveService.selectLeaveByStateAndDepartId(departmentId);//查询还未审批的请假记录
         model.addAttribute("leaves", leaves);
-        return "lyj/leave/leaveapproval";
+        return "leave/leaveapproval";
     }
     @GetMapping("approveLeave")
     public  String leaveApproval(@RequestParam("id") int id,Model model){
@@ -134,7 +134,7 @@ public class LeaveController {
         int departmentId = leave.getDepartmentId();
         List<Leave> leaves = leaveService.selectLeaveByStateAndDepartId(departmentId);//查询还未审批的请假记录
         model.addAttribute("leaves",leaves);
-        return "lyj/leave/leaveapproval";
+        return "leave/leaveapproval";
     }
     @GetMapping("disapproveLeave")
     public  String leaveDisapproval(@RequestParam("id") int id,Model model){
@@ -150,7 +150,7 @@ public class LeaveController {
         int departmentId = leave.getDepartmentId();
         List<Leave> leaves = leaveService.selectLeaveByStateAndDepartId(departmentId);//查询还未审批的请假记录
         model.addAttribute("leaves",leaves);
-        return "lyj/leave/leaveapproval";
+        return "leave/leaveapproval";
     }
 
 }

@@ -6,11 +6,12 @@ import com.fanyank.pojo.DepartmentInfo;
 import com.fanyank.pojo.User;
 import com.fanyank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Repository
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserMapper userMapper;
@@ -29,14 +30,17 @@ public class UserServiceImpl implements UserService{
     public User selectUserByUsername(String username){
         return userMapper.selectUserByUsername(username);
     }
-    public int updateSignByUsername(String username){
-        return userMapper.updateSignByUsername(username);
+    public int setOnlineStatusByUsername(String username){
+        return userMapper.setOnlineStatusByUsername(username);
     }
     public User selectMessageByUsername(String username){
        return userMapper.selectMessageByUsername(username);
     }
     public int updateMessageByUsername(User user){return userMapper.updateMessageByUsername(user);}
-    public int exitSignByUsername(String username){return userMapper.exitSignByUsername(username);}
+    public int setExitStatusByUsername(String username){return userMapper.setExitStatusByUsername(username);}
+    public int setHideStatusByUsername(String username) {
+        return userMapper.setHideStatusByUsername(username);
+    }
     public User selectUserByEmail(String email){return userMapper.selectUserByEmail(email);}
     public  int updatePasswordByEmail(User user){return userMapper.updatePasswordByEmail(user);}
     public int updatePasswordByUsername(User user){return userMapper.updatePasswordByUsername(user);}

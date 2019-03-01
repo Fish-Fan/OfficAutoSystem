@@ -15,13 +15,13 @@ public class LoginController {
     @GetMapping("/user/login")
     public String gotoLogin(Model model) {
             model.addAttribute("user",  new User());
-            return "gsy/login";
+            return "basic/login";
     }
     @GetMapping("personal_message")
     public String gotoPersonal(Model model,HttpSession session){
         User sessionUser = (User) session.getAttribute("current_user");
         model.addAttribute("user",sessionUser);
-        return "gsy/personal_message";
+        return "basic/personal_message";
     }
 
 }

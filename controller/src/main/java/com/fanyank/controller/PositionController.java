@@ -6,7 +6,6 @@ import com.fanyank.pojo.User;
 import com.fanyank.service.NotifyService;
 import com.fanyank.service.PositionService;
 import com.fanyank.service.UserService;
-import com.fanyank.socket.SocketHandler;
 import com.fanyank.util.QiniuUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class PositionController {
     @GetMapping("/position/control")
     public String positionManager(Model model) {
         model.addAttribute("positionList",positionService.findAllPosition());
-        return "fyf/position/authorityManager";
+        return "position/authorityManager";
     }
 
     @PostMapping("/position/control")
@@ -59,7 +58,7 @@ public class PositionController {
         User user = (User) session.getAttribute("current_user");
         List<PositionApplication> applyList = positionService.findPositionApply(user);
         model.addAttribute("applyList",applyList);
-        return "fyf/position/bossCheckApplyMessage";
+        return "position/bossCheckApplyMessage";
     }
 
     @GetMapping("/position/applyinfo/manager")
@@ -67,7 +66,7 @@ public class PositionController {
         User user = (User) session.getAttribute("current_user");
         model.addAttribute("user",user);
         model.addAttribute("applyList",positionService.findApplyInfoByRespondentId(user.getId()));
-        return "fyf/position/managerCheckApplyMessage";
+        return "position/managerCheckApplyMessage";
     }
 
     /**
@@ -83,7 +82,7 @@ public class PositionController {
         model.addAttribute("token", QiniuUtil.getToken());
         model.addAttribute("positionList",positionList);
         model.addAttribute("user",user);
-        return "fyf/position/applyPosition";
+        return "position/applyPosition";
     }
 
     @PostMapping("/position/up")
@@ -156,11 +155,11 @@ public class PositionController {
     public String forwardResultPage(Integer id,Model model) {
         PositionApplication apply = positionService.findApplyById(id);
         model.addAttribute("apply",apply);
-        return "fyf/position/afterApplyPosition";
+        return "position/afterApplyPosition";
     }
 
     @GetMapping("/timeline")
     public String forwardTimeLinePage() {
-        return "fyf/timeline";
+        return "basic/timeline";
     }
 }

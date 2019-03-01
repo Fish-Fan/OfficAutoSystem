@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fanyank.mapper.DepartmentMapper">
     <select id="selectDepartmentById" parameterType="int" resultType="department">
-        select * from department where id = #{id}
+        select id,department from department where id = #{id}
     </select>
 
     <!--插入部门管理人员信息-->
@@ -34,5 +34,17 @@
     <select id="findByDepartmentId" parameterType="int" resultMap="departmentInfoMap">
         select * from department_info
         where id = #{departmentId}
+    </select>
+
+
+    <!--IM-->
+    <resultMap id="departmentMessage" type="department">
+        <id property="id" column="id"/>
+        <result property="department" column="department"/>
+        <collection property="list" column="id" select="com.fanyank.mapper.UserMapper.findUserByDepartment"/>
+    </resultMap>
+
+    <select id="getDepartmentMessage" resultMap="departmentMessage">
+        select * from department
     </select>
 </mapper>

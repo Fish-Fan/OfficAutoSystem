@@ -13,13 +13,15 @@ public interface UserService {
 
     public User selectUserByUsername(String username);
 
-    public int updateSignByUsername(String username);
+    public int setOnlineStatusByUsername(String username);
 
     public User selectMessageByUsername(String username);
 
     public int updateMessageByUsername(User user);
 
-    public int exitSignByUsername(String username);
+    public int setExitStatusByUsername(String username);
+
+    public int setHideStatusByUsername(String username);
 
     public User selectUserByEmail(String email);
 

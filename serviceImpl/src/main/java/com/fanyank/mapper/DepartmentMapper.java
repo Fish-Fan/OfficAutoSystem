@@ -4,6 +4,8 @@ import com.fanyank.pojo.Department;
 import com.fanyank.pojo.DepartmentInfo;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by lenovo on 2018/3/12.
  */
@@ -16,4 +18,6 @@ public interface DepartmentMapper {
     void updateDepartmentInfo(DepartmentInfo departmentInfo);
 
     DepartmentInfo findByDepartmentId(int departmentId);
+
+    List<Department> getDepartmentMessage();
 }

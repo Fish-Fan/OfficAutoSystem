@@ -7,6 +7,7 @@ import com.fanyank.pojo.AttendanceStandard;
 import com.fanyank.pojo.User;
 import com.fanyank.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -14,7 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Service
+@Repository
 public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     AttendanceMapper attendanceMapper;

@@ -26,13 +26,13 @@ com/fanyank/pojo/Comment.class
 com/fanyank/util/ConfigProp.class
 com/fanyank/util/FileUtil.class
 com/fanyank/service/ConferenceService.class
+com/fanyank/service/IMService.class
 com/fanyank/pojo/Department.class
 com/fanyank/pojo/PositionApplication.class
 com/fanyank/pojo/User.class
 com/fanyank/service/LeaveService.class
 com/fanyank/pojo/Leave.class
 com/fanyank/pojo/States.class
-com/fanyank/socket/SocketHandler.class
 com/fanyank/pojo/Position.class
 com/fanyank/pojo/AttendanceStandard.class
 com/fanyank/service/AttendanceStandardService.class

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SocketController {
     @GetMapping("/socket")
     public String testSocket() {
-        return "fyf/websocket";
+        return "basic/websocket";
     }
 
 }

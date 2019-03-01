@@ -22,6 +22,7 @@
     <bean id="positionServiceImpl" class="com.fanyank.serviceImpl.PositionServiceImpl"/>
     <bean id="topicServiceImpl" class="com.fanyank.serviceImpl.TopicServiceImpl"/>
     <bean id="userServiceImpl" class="com.fanyank.serviceImpl.UserServiceImpl"/>
+    <bean id="imServiceImpl" class="com.fanyank.serviceImpl.IMServiceImpl"/>
 
     <!--注册服务到dubbo-->
     <dubbo:service interface="com.fanyank.service.AttendanceService" ref="attendanceServiceImpl"/>
@@ -34,6 +35,7 @@
     <dubbo:service interface="com.fanyank.service.PositionService" ref="positionServiceImpl"/>
     <dubbo:service interface="com.fanyank.service.TopicService" ref="topicServiceImpl"/>
     <dubbo:service interface="com.fanyank.service.UserService" ref="userServiceImpl"/>
+    <dubbo:service interface="com.fanyank.service.IMService" ref="imServiceImpl"/>
 
 
 </beans>

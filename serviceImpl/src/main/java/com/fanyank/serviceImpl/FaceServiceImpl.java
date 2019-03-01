@@ -10,11 +10,12 @@ import com.fanyank.util.BaiduUtil;
 import com.fanyank.util.QiniuUtil;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 
-@Service
+@Repository
 public class FaceServiceImpl implements FaceService{
     @Autowired
     private AttendanceServiceImpl attendanceService;

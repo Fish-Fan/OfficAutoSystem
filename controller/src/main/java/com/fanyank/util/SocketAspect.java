@@ -22,9 +22,4 @@ public class SocketAspect {
         System.out.println("abcdef");
         socketHandler.sendMessageToUser(notify.getUserId(),new TextMessage(JSON.toJSONString(notify)));
     }
-
-    @Before("target(com.fanyank.controller.UserController)")
-    public void test() {
-        System.out.println("Before userController ... ");
-    }
 }

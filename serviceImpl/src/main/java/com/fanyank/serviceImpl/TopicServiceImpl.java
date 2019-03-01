@@ -6,11 +6,12 @@ import com.fanyank.pojo.Node;
 import com.fanyank.pojo.Topic;
 import com.fanyank.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Repository
 public class TopicServiceImpl implements TopicService{
     @Autowired
     private TopicMapper topicMapper;

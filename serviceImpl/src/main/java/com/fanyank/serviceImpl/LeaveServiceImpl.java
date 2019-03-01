@@ -4,11 +4,12 @@ import com.fanyank.mapper.LeaveMapper;
 import com.fanyank.pojo.Leave;
 import com.fanyank.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Repository
 public class LeaveServiceImpl implements LeaveService{
     @Autowired
     LeaveMapper leaveMapper;

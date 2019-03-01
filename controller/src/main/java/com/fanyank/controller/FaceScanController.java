@@ -52,7 +52,7 @@ public class FaceScanController {
     @RequestMapping(value="/user/signin",method= RequestMethod.GET)
     public String signin(Model model){
         model.addAttribute("token",BaiduUtil.getAuth());
-        return "fyf/signin";
+        return "basic/signin";
     }
 
     @PostMapping("/user/test")
