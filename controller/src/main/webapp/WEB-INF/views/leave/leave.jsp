@@ -29,6 +29,8 @@
         <!-- Sweet Alert -->
         <link href="/static/css/gsy/plugins/sweetalert/sweetalert.css" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/fyf/toastr.min.css">
+        <link rel="stylesheet" href="/static/dist/css/layui.css">
+
         <script src="/static/js/fyf/jQuery2.2.3.js"></script>
     </head>
 

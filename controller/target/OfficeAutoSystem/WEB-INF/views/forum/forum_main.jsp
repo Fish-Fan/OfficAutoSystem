@@ -14,6 +14,7 @@
     <link href="/static/js/css/gritter/jquery.gritter.css" rel="stylesheet">
     <link href="/static/css/css/animate.css" rel="stylesheet">
     <link href="/static/css/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
 </head>
 <body>
 <div id="wrapper" style="min-height: 100vh">

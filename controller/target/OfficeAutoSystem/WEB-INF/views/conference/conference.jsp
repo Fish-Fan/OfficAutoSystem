@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/static/css/fyf/conference.css">
     <!--select2-->
     <link rel="stylesheet" href="/static/css/fyf/select2.css">
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
     <script src="/static/js/fyf/jQuery2.2.3.js"></script>
 </head>
 <body>

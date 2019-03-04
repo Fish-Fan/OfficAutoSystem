@@ -18,6 +18,7 @@
         <link href="/static/css/css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/fyf/toastr.min.css">
         <script src="/static/js/fyf/jQuery2.2.3.js"></script>
+        <link rel="stylesheet" href="/static/dist/css/layui.css">
     </head>
     <body>
         <div id="wrapper">

@@ -1,7 +1,13 @@
 package com.fanyank.socket;
 
 
+import com.alibaba.fastjson.JSON;
+import com.fanyank.pojo.IMMessage;
 import com.fanyank.pojo.User;
+import com.fanyank.service.IMService;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketMessage;
@@ -10,11 +16,15 @@ import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-
+@Component
 public class SocketHandler extends AbstractWebSocketHandler implements Serializable {
+    @Autowired
+    private IMService imService;
+
     private static final Map<Integer,WebSocketSession> userMap = new HashMap<>();
     @Override
     public void afterConnectionEstablished(WebSocketSession webSocketSession) throws Exception {
@@ -32,6 +42,15 @@ public class SocketHandler extends AbstractWebSocketHandler implements Serializa
     @Override
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
         System.out.println("handleMessage收到消息->" + webSocketMessage.getPayload());
+//        IMMessage message = imService.handleFriendMessage(webSocketMessage);
+
+        Gson gson = new Gson();
+        IMMessage imMessage = gson.fromJson(webSocketMessage.getPayload().toString(),IMMessage.class);
+        imMessage.setTimestamp(new Date().getTime());
+        imMessage.setMine(false);
+
+
+        sendMessageToUser(imMessage.getId(),new TextMessage(gson.toJson(imMessage)));
     }
 
     @Override
@@ -68,7 +87,7 @@ public class SocketHandler extends AbstractWebSocketHandler implements Serializa
     }
 
     /**
-     * 给指定商家发送消息
+     * 给指定员工发送消息
      * @param targetId
      * @param textMessage
      */
@@ -87,4 +106,5 @@ public class SocketHandler extends AbstractWebSocketHandler implements Serializa
             }
         }
     }
+
 }

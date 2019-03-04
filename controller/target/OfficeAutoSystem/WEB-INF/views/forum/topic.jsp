@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/static/css/fyf/simditor.css">
     <link rel="stylesheet" href="/static/css/fyf/select2.css">
 
-
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
 </head>
 <body>
 <div id="wrapper" style="min-height: 100vh">

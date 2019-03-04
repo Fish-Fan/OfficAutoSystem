@@ -21,7 +21,7 @@
     <link href="/static/css/css/style1.css" rel="stylesheet">
     <!--simditor-->
     <link rel="stylesheet" href="/static/css/fyf/simditor.css">
-
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
 </head>
 <body>
 <div id="wrapper" style="min-height: 100vh">

@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>签到</title>
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
 </head>
 <body>
 <%--<input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia();" /><br />--%>

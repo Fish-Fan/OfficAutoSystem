@@ -19,7 +19,6 @@ public class SocketAspect {
 
     @AfterReturning(value="target(com.fanyank.service.NotifyService)",returning="notify")
     public void sendMessageToUser(Notify notify) {
-        System.out.println("abcdef");
         socketHandler.sendMessageToUser(notify.getUserId(),new TextMessage(JSON.toJSONString(notify)));
     }
 }

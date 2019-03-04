@@ -19,6 +19,8 @@
         <!--datepicker-->
         <link href="/static/css/lyj/datepicker3.css" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/fyf/toastr.min.css">
+        <link rel="stylesheet" href="/static/dist/css/layui.css">
+
         <script src="/static/js/fyf/jQuery2.2.3.js"></script>
 
     </head>

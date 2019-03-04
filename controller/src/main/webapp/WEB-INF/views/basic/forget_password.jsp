@@ -17,6 +17,7 @@
     <link href="/static/css/gsy/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/static/css/css/animate.css" rel="stylesheet">
     <link href="/static/css/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
     <script src="/static/js/gsy/js/jquery-2.1.1.js"></script>
 </head>
 <body class="gray-bg">

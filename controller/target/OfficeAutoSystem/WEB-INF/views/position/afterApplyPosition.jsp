@@ -15,6 +15,8 @@
     <link href="/static/css/css/animate.css" rel="stylesheet">
     <link href="/static/css/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/fyf/toastr.min.css">
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
+
     <script src="/static/js/fyf/jQuery2.2.3.js"></script>
 </head>
 <body>

@@ -6,6 +6,7 @@
 %>
 <script src="/static/js/fyf/toastr.min.js"></script>
 <script src="/static/js/fyf/timeago.js"></script>
+<script src="/static/dist/layui.js"></script>
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -87,28 +88,7 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         };
-        <!--websocket start-->
-        var sock;
-        if ('WebSocket' in window) {
-            sock = new WebSocket("<%=wsPath%>socketServer");
-        } else if ('MozWebSocket' in window) {
-            sock = new MozWebSocket("<%=wsPath%>socketServer");
-        } else {
-            sock = new SockJS("<%=basePath%>sockjs/socketServer");
-        }
-        sock.onopen = function (e) {
 
-        };
-        sock.onmessage = function (e) {
-            var notification = JSON.parse(e.data);
-            insertNotify(notification);
-        };
-        sock.onerror = function (e) {
-            console.log(e);
-        };
-        sock.onclose = function (e) {
-            console.log(e);
-        }
 
 
         function insertNotify(notification) {
@@ -154,6 +134,63 @@
             var url = $(this).attr('href');
             $.get('/user/notify/update?id='+id,function () {
                 window.location.href = url;
+            });
+        });
+
+        layui.use('layim', function(layim){
+
+            <!--websocket start-->
+            var sock;
+            if ('WebSocket' in window) {
+                sock = new WebSocket("<%=wsPath%>socketServer");
+            } else if ('MozWebSocket' in window) {
+                sock = new MozWebSocket("<%=wsPath%>socketServer");
+            } else {
+                sock = new SockJS("<%=basePath%>sockjs/socketServer");
+            }
+            sock.onopen = function (e) {
+
+            };
+            sock.onmessage = function (e) {
+                var message = JSON.parse(e.data);
+                if(message.type == "friend") {
+                    message.mine = false;
+                    console.log(message);
+                    layim.getMessage(message);
+                } else {
+                    insertNotify(message);
+                }
+
+            };
+            sock.onerror = function (e) {
+                console.log(e);
+            };
+            sock.onclose = function (e) {
+                console.log(e);
+            }
+
+
+
+            layim.config({
+                init: {
+                    url: '/im/init',
+                    type: 'get'
+                },
+                brief: false //是否简约模式（如果true则不显示主面板）
+
+            });
+
+            layim.on('sendMessage',function (res) {
+                var mine = res.mine;
+                var to = res.to;
+                sock.send(JSON.stringify({
+                    'id': to.id,
+                    'fromid': mine.id,
+                    'username': mine.username,
+                    'avatar': mine.avatar,
+                    'type': 'friend',
+                    'content': mine.content
+                }));
             });
         });
     })

@@ -18,6 +18,7 @@
     <link href="/static/css/gsy/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="/static/css/css/animate.css" rel="stylesheet">
     <link href="/static/css/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/dist/css/layui.css">
 </head>
 <body class="gray-bg">
 <div class="passwordBox animated fadeInDown">
