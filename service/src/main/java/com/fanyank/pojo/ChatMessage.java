@@ -1,6 +1,6 @@
 package com.fanyank.pojo;
 
-public class IMMessage {
+public class ChatMessage {
     //消息来源用户名
     private String username;
     //消息来源用户头像
@@ -19,6 +19,8 @@ public class IMMessage {
     private Integer fromid;
     //timestamp
     private long timestamp;
+    //消息目标ID
+    private Integer toid;
 
     public String getUsername() {
         return username;
@@ -92,9 +94,17 @@ public class IMMessage {
         this.fromid = fromid;
     }
 
+    public Integer getToid() {
+        return toid;
+    }
+
+    public void setToid(Integer toid) {
+        this.toid = toid;
+    }
+
     @Override
     public String toString() {
-        return "IMMessage{" +
+        return "ChatMessage{" +
                 "username='" + username + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", id=" + id +
@@ -104,6 +114,7 @@ public class IMMessage {
                 ", mine=" + mine +
                 ", fromid=" + fromid +
                 ", timestamp=" + timestamp +
+                ", toid=" + toid +
                 '}';
     }
 }

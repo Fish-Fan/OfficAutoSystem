@@ -1,4 +1,3 @@
-com/fanyank/pojo/IMMessage.class
 com/fanyank/service/UserService.class
 com/fanyank/service/PositionService.class
 com/fanyank/pojo/Attendance.class
@@ -13,6 +12,7 @@ com/fanyank/pojo/ConferenceType.class
 com/fanyank/service/TopicService.class
 com/fanyank/pojo/GroupUser.class
 com/fanyank/service/DepartmentService.class
+com/fanyank/pojo/Message.class
 com/fanyank/pojo/Topic.class
 com/fanyank/util/GsonUtils.class
 com/fanyank/service/FaceService.class
@@ -23,9 +23,11 @@ com/fanyank/pojo/Notify.class
 com/fanyank/util/HttpUtil.class
 com/fanyank/pojo/ScanResult.class
 com/fanyank/pojo/Conference.class
+com/fanyank/pojo/Message$Data.class
 com/fanyank/pojo/Comment.class
 com/fanyank/util/ConfigProp.class
 com/fanyank/util/FileUtil.class
+com/fanyank/pojo/ChatMessage.class
 com/fanyank/service/ConferenceService.class
 com/fanyank/service/IMService.class
 com/fanyank/pojo/Department.class

@@ -19,8 +19,10 @@
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/AttendanceResult.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/service/LeaveService.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/service/DepartmentService.java
+/Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/ChatMessage.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/util/Base64Util.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/util/GsonUtils.java
+/Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/Message.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/ConferenceMember.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/Department.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/util/BaiduUtil.java
@@ -36,4 +38,3 @@
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/DepartmentInfo.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/Leave.java
 /Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/service/AttendanceStandardService.java
-/Users/yanfeng-mac/IdeaProjects/project/OfficAutoSystem/service/src/main/java/com/fanyank/pojo/IMMessage.java

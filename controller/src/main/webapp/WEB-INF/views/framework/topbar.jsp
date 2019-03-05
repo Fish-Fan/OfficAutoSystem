@@ -184,13 +184,13 @@
                 var mine = res.mine;
                 var to = res.to;
                 sock.send(JSON.stringify({
-                    'id': to.id,
-                    'fromid': mine.id,
-                    'username': mine.username,
-                    'avatar': mine.avatar,
-                    'type': 'friend',
-                    'content': mine.content
+                    type: 'chatMessage',
+                    data: res
                 }));
+            });
+
+            layim.on('ready',function (options) {
+                console.log(options);
             });
         });
     })

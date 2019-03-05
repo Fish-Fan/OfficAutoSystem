@@ -1,8 +1,8 @@
 package com.fanyank.socket;
 
 
-import com.alibaba.fastjson.JSON;
-import com.fanyank.pojo.IMMessage;
+import com.fanyank.pojo.ChatMessage;
+import com.fanyank.pojo.Message;
 import com.fanyank.pojo.User;
 import com.fanyank.service.IMService;
 import com.google.gson.Gson;
@@ -13,7 +13,9 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
+import org.springframework.web.socket.server.standard.SpringConfigurator;
 
+import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,9 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@ServerEndpoint(value = "/socketServer",configurator = SpringConfigurator.class)
 public class SocketHandler extends AbstractWebSocketHandler implements Serializable {
     @Autowired
-    private IMService imService;
+    private MessageHelper messageHelper;
 
     private static final Map<Integer,WebSocketSession> userMap = new HashMap<>();
     @Override
@@ -42,15 +45,9 @@ public class SocketHandler extends AbstractWebSocketHandler implements Serializa
     @Override
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
         System.out.println("handleMessage收到消息->" + webSocketMessage.getPayload());
-//        IMMessage message = imService.handleFriendMessage(webSocketMessage);
-
+        ChatMessage chatMessage = messageHelper.handleChatMessage(webSocketMessage);
         Gson gson = new Gson();
-        IMMessage imMessage = gson.fromJson(webSocketMessage.getPayload().toString(),IMMessage.class);
-        imMessage.setTimestamp(new Date().getTime());
-        imMessage.setMine(false);
-
-
-        sendMessageToUser(imMessage.getId(),new TextMessage(gson.toJson(imMessage)));
+        sendMessageToUser(chatMessage.getToid(),new TextMessage(gson.toJson(chatMessage)));
     }
 
     @Override

@@ -25,6 +25,11 @@ public class User implements Serializable {
     private Integer currentConferenceApplyId;
     private Integer currentPositionApplyId;
     private String status;
+    /**
+     * chatMessage使用
+     */
+    private String type;
+    private String content;
 
     public Integer getId() {
         return id;
@@ -175,6 +180,22 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -196,7 +217,9 @@ public class User implements Serializable {
                 ", desc='" + desc + '\'' +
                 ", currentConferenceApplyId=" + currentConferenceApplyId +
                 ", currentPositionApplyId=" + currentPositionApplyId +
-                ", status=" + status +
+                ", status='" + status + '\'' +
+                ", type='" + type + '\'' +
+                ", content='" + content + '\'' +
                 '}';
     }
 }
