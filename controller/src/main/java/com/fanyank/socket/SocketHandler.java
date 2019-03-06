@@ -4,6 +4,7 @@ package com.fanyank.socket;
 import com.fanyank.pojo.ChatMessage;
 import com.fanyank.pojo.Message;
 import com.fanyank.pojo.User;
+import com.fanyank.rocketmq.RocketMQProducer;
 import com.fanyank.service.IMService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,6 @@ import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 import org.springframework.web.socket.server.standard.SpringConfigurator;
-
-import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
@@ -23,8 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@ServerEndpoint(value = "/socketServer",configurator = SpringConfigurator.class)
-public class SocketHandler extends AbstractWebSocketHandler implements Serializable {
+//@ServerEndpoint(value = "/socketServer",configurator = SpringConfigurator.class)
+public class SocketHandler extends AbstractWebSocketHandler {
     @Autowired
     private MessageHelper messageHelper;
 

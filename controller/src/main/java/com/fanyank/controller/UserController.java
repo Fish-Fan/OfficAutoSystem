@@ -36,7 +36,7 @@ public class UserController {
                 userService.setOnlineStatusByUsername(realuser.getUsername());
                 session.setAttribute("current_user",realuser);
                 model.addAttribute("user",realuser);
-                return "basic/personal_message";
+                return "framework/index";
                 //登录成功
             }else{
                 //登录失败

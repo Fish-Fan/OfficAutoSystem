@@ -19,7 +19,14 @@
     <!--Spring读取Properties配置文件-->
     <!--<context:property-placeholder location="classpath:conf.properties"/>-->
 
-
+    <!--rocketMQ-->
+    <bean id="myProducer" class="com.fanyank.rocketmq.RocketMQProducer"
+          init-method="init"
+          destroy-method="destroy"
+          scope="singleton">
+        <property name="producerGroup" value="OA" />
+        <property name="namesrvAddr" value="localhost:9876" />
+    </bean>
 
 
 

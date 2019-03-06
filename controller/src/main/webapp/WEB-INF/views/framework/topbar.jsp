@@ -190,7 +190,7 @@
             });
 
             layim.on('ready',function (options) {
-                console.log(options);
+
             });
         });
     })
