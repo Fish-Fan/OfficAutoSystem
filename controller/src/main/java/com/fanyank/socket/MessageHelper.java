@@ -44,7 +44,7 @@ public class MessageHelper {
 
         try {
             org.apache.rocketmq.common.message.Message msg = new org.apache.rocketmq.common.message.Message(
-                    "SocketTopic","SocketTag",chatMessage.toString().getBytes(RemotingHelper.DEFAULT_CHARSET));
+                    "SocketTopic","SocketTag",gson.toJson(chatMessage).getBytes(RemotingHelper.DEFAULT_CHARSET));
             SendResult sendResult = producer.getProducer().send(msg);
             System.out.println("SendResult: " + sendResult);
         } catch (UnsupportedEncodingException e) {

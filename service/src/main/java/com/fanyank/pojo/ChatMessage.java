@@ -1,6 +1,11 @@
 package com.fanyank.pojo;
 
-public class ChatMessage {
+import java.io.Serializable;
+
+public class ChatMessage implements Serializable {
+    private static final long serialVersionUID = 4124065598395245121L;
+
+
     //消息来源用户名
     private String username;
     //消息来源用户头像

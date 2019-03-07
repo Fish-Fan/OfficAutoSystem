@@ -12,37 +12,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException, MQClientException {
+    public static void main(String[] args) throws IOException {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:application*.xml");
         ctx.start();
         System.out.println("running...");
-
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("OAConsumer");
-        consumer.setNamesrvAddr("localhost:9876");
-        consumer.subscribe("SocketTopic","*");
-        consumer.registerMessageListener(new MessageListenerConcurrently() {
-            @Override
-            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-                Gson gson = new Gson();
-                for(MessageExt messageExt : list) {
-                    System.out.println("messageExt: " + messageExt);
-                    try {
-                        String messageBody = new String(messageExt.getBody(),"utf-8");
-//                        MyContent content = gson.fromJson(messageBody,MyContent.class);
-                        System.out.println(Thread.currentThread().getName() + " receive message : " + messageBody);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }
-                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-            }
-        });
-
-        consumer.start();
-        System.out.println("Consumer start...");
-
         System.in.read();
     }
 }
