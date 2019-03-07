@@ -43,4 +43,24 @@ public interface FolderMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(Folder record);
+
+    /**
+     * 获取根目录
+     * @return
+     */
+    Folder getRootFolder();
+
+    /**
+     * 获取用户根目录
+     * @param userId
+     * @return
+     */
+    Folder getUserRootFolder(Integer userId);
+
+    /**
+     * 获取父目录下的所有子目录
+     * @param preFolderId
+     * @return
+     */
+    List<Folder> selectFolderListByPreFolderId(Integer preFolderId);
 }

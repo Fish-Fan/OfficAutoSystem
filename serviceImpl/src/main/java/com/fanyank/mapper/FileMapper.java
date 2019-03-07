@@ -43,4 +43,11 @@ public interface FileMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(File record);
+
+    /**
+     * 获取父目录下的所有文件
+     * @param folderId
+     * @return
+     */
+    List<File> selectFileListByFolderId(Integer folderId);
 }
