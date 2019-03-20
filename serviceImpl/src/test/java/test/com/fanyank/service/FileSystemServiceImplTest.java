@@ -73,7 +73,7 @@ public void testGetUserRootFolder() throws Exception {
 @Test
 public void testGetFolderById() throws Exception { 
 //TODO: Test goes here...
-    Folder folder = fileSystemService.getFolderById(2);
+    Folder folder = fileSystemService.getFolderById(1);
     Assert.assertNotNull(folder);
 } 
 
