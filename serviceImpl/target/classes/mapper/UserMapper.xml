@@ -17,7 +17,6 @@
         <result property="currentPositionApplyId" column="current_position_apply_id"/>
         <result property="sign" column="sign"/>
         <result property="avatar" column="avatar"/>
-        <result property="desc" column="desc"/>
         <result property="status" column="status"/>
         <association property="position" column="position_id" select="com.fanyank.mapper.PositionMapper.selectPositionById"></association>
         <association property="department" column="department_id" select="com.fanyank.mapper.DepartmentMapper.selectDepartmentById"></association>
@@ -59,7 +58,7 @@
         UPDATE `user`  set  avatar = #{avatar}, phone_number = #{phoneNumber},
         email = #{email},offical_number = #{officalNumber},
         postcode = #{postcode},offical_address = #{officalAddress},
-        `desc` = #{desc},remark = #{remark},current_conference_apply_id = #{currentConferenceApplyId},
+        remark = #{remark},current_conference_apply_id = #{currentConferenceApplyId},
         current_position_apply_id = #{currentPositionApplyId}
         WHERE username = #{username}
     </update>
