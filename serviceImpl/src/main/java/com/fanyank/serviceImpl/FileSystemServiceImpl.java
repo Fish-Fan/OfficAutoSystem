@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -65,7 +66,7 @@ public class FileSystemServiceImpl implements FileSystemService {
         for(File file : fileList) {
             FileTreeNodeDto tempNode = new FileTreeNodeDto();
             tempNode.setChildren(false);
-            tempNode.setId(file.getId()+10);
+            tempNode.setId(file.getId());
             tempNode.setText(file.getName());
             tempNode.setType(file.getType());
             tempNode.setForeignChain(file.getForeignChain());
@@ -76,6 +77,7 @@ public class FileSystemServiceImpl implements FileSystemService {
             tempNode.setChildren(true);
             tempNode.setId(folder1.getId());
             tempNode.setText(folder1.getName());
+            tempNode.setType("folder");
             list.add(tempNode);
         }
         Gson gson = new Gson();
@@ -93,13 +95,17 @@ public class FileSystemServiceImpl implements FileSystemService {
     }
 
     @Override
-    public void renameFile(Integer fileId) {
-
+    public void renameFile(Integer fileId,String name) {
+        File file = fileMapper.selectByPrimaryKey(fileId);
+        file.setName(name);
+        file.setUpdateTime(new Date().getTime());
     }
 
     @Override
-    public void renameFolder(Integer folderId) {
-
+    public void renameFolder(Integer folderId,String name) {
+        Folder folder = folderMapper.selectByPrimaryKey(folderId);
+        folder.setName(name);
+        folder.setUpdateTime(new Date().getTime());
     }
 
     @Override
