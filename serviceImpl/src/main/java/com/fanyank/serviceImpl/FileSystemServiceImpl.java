@@ -5,6 +5,7 @@ import com.fanyank.mapper.FileMapper;
 import com.fanyank.mapper.FolderMapper;
 import com.fanyank.pojo.File;
 import com.fanyank.pojo.Folder;
+import com.fanyank.pojo.Result;
 import com.fanyank.service.FileSystemService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,24 +38,17 @@ public class FileSystemServiceImpl implements FileSystemService {
     }
 
     @Override
-    public void addFolder(Folder folder) {
+    public Folder addFolder(Folder folder) {
         folderMapper.insert(folder);
+        return folder;
     }
 
     @Override
-    public void addFile(File file) {
+    public File addFile(File file) {
         fileMapper.insert(file);
+        return file;
     }
 
-    @Override
-    public void deleteFolder(Folder folder) {
-        folderMapper.deleteByPrimaryKey(folder.getId());
-    }
-
-    @Override
-    public void deleteFile(File file) {
-        fileMapper.deleteByPrimaryKey(file.getId());
-    }
 
     @Override
     public String getFolderData(Integer folderId) {
@@ -85,13 +79,25 @@ public class FileSystemServiceImpl implements FileSystemService {
     }
 
     @Override
-    public void deleteFile(Integer fileId) {
-
+    public Result deleteFile(Integer fileId) {
+        File existFile = fileMapper.selectByPrimaryKey(fileId);
+        if(existFile != null) {
+            fileMapper.deleteByPrimaryKey(fileId);
+            return new Result(true);
+        } else {
+            return new Result(false,"找不到该文件");
+        }
     }
 
     @Override
-    public void deleteFolder(Integer folderId) {
-
+    public Result deleteFolder(Integer folderId) {
+        Folder existFolder = folderMapper.selectByPrimaryKey(folderId);
+        if(existFolder != null) {
+            folderMapper.deleteByPrimaryKey(folderId);
+            return new Result(true);
+        } else {
+            return new Result(false,"找不到该文件夹");
+        }
     }
 
     @Override
@@ -99,6 +105,7 @@ public class FileSystemServiceImpl implements FileSystemService {
         File file = fileMapper.selectByPrimaryKey(fileId);
         file.setName(name);
         file.setUpdateTime(new Date().getTime());
+        fileMapper.updateByPrimaryKey(file);
     }
 
     @Override
@@ -106,18 +113,14 @@ public class FileSystemServiceImpl implements FileSystemService {
         Folder folder = folderMapper.selectByPrimaryKey(folderId);
         folder.setName(name);
         folder.setUpdateTime(new Date().getTime());
+        folderMapper.updateByPrimaryKey(folder);
     }
+
 
     @Override
-    public void createFile(File file) {
-        fileMapper.insert(file);
+    public File getFileById(Integer fileId) {
+        return fileMapper.selectByPrimaryKey(fileId);
     }
-
-    @Override
-    public void createFolder(Folder folder) {
-
-    }
-
 
 
 }
