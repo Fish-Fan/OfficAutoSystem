@@ -51,12 +51,19 @@ public class FileSystemServiceImpl implements FileSystemService {
 
 
     @Override
-    public String getFolderData(Integer folderId) {
-        Folder folder = folderMapper.selectByPrimaryKey(folderId);
+    public String getFolderData(Integer folderId,Boolean isPrivate) {
+        List<FileTreeNodeDto> list = new ArrayList<>();
+        Folder folder = null;
+        if(isPrivate) {
+            folder = folderMapper.selectByPrimaryKeyInPrivate(folderId);
+        } else {
+            folder = folderMapper.selectByPrimaryKeyInPublic(folderId);
+        }
+
         List<File> fileList = folder.getFiles();
         List<Folder> folderList = folder.getFolders();
 
-        List<FileTreeNodeDto> list = new ArrayList<>();
+
         for(File file : fileList) {
             FileTreeNodeDto tempNode = new FileTreeNodeDto();
             tempNode.setChildren(false);
