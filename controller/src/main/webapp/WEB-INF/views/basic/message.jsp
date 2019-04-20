@@ -69,7 +69,7 @@
                                             </c:if>
 
                                         </div>
-                                        <div class="col-sm-3" style="padding-top:160px;padding-left:50px;" id="picker">上传新头像</div>
+                                        <div id="picker">上传新头像</div>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
